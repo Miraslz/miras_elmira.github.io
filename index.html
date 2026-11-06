@@ -80,7 +80,7 @@
             border-bottom: none;
         }
 
-        /* Hero Image - Hands with Rings */
+        /* Hero Image - Rings */
         .hero-img-container {
             width: 190px;
             height: 190px;
@@ -120,12 +120,20 @@
 
         .names-title {
             font-family: 'Great Vibes', cursive;
-            font-size: 64px;
+            font-size: 58px;
             font-weight: 400;
             color: var(--primary);
             letter-spacing: 1px;
+            line-height: 1.1;
             margin: 5px 0;
             text-shadow: 0 2px 4px rgba(197, 160, 89, 0.15);
+        }
+
+        .name-and {
+            font-family: 'Great Vibes', cursive;
+            color: var(--primary);
+            font-size: 32px;
+            margin: -5px 0;
         }
 
         .divider {
@@ -135,22 +143,51 @@
             margin: 25px auto;
         }
 
-        /* Venue Image */
-        .venue-img-container {
-            width: 100%;
-            height: 280px;
+        /* Program / Timeline */
+        .program-box {
+            background: #fff;
+            padding: 25px;
             border-radius: 12px;
-            overflow: hidden;
-            margin: 20px 0;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
             border: 1px solid var(--gold-light);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+            text-align: left;
+            margin: 25px 0;
         }
 
-        .venue-img-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
+        .program-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 18px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed rgba(197, 160, 89, 0.3);
+        }
+
+        .program-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .program-time {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--primary);
+            min-width: 65px;
+        }
+
+        .program-details h4 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 3px;
+        }
+
+        .program-details p {
+            font-size: 14px;
+            color: #666;
+            margin: 0;
         }
 
         /* Timer */
@@ -291,7 +328,6 @@
     <div class="container">
         <!-- Invitation Intro -->
         <section>
-            <!-- Фото рук с кольцом -->
             <div class="hero-img-container">
                 <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&q=80" alt="Свадебные кольца">
             </div>
@@ -304,8 +340,12 @@
                 Приглашаем вас от всего сердца
             </p>
 
-            <!-- Имена меняются в зависимости от языка -->
-            <h1 class="names-title" id="names-el" data-ru="Мирас и Эльмира" data-kz="Мирас пен Эльмира">Мирас и Эльмира</h1>
+            <!-- Имена в три отдельные строки строго по языкам -->
+            <div style="margin: 15px 0;">
+                <div class="names-title">Мирас</div>
+                <div class="name-and" id="name-conj" data-ru="и" data-kz="пен">и</div>
+                <div class="names-title">Эльмира</div>
+            </div>
 
             <p id="p-wedding" style="margin-top: 15px; font-size: 17px; font-weight: 400;" data-ru="на нашу свадьбу!" data-kz="үйлену тойына шақырамыз!">
                 на нашу свадьбу!
@@ -317,20 +357,34 @@
             <div class="hosts-text">Арман - Жумагуль</div>
         </section>
 
-        <!-- Date & Time & Events -->
+        <!-- Date & Program -->
         <section>
-            <h2 id="h-date" style="font-family: 'Cormorant Garamond', serif; font-size: 32px; color: var(--primary); margin-bottom: 25px;" data-ru="13 декабря 2026" data-kz="13 желтоқсан 2026">13 декабря 2026</h2>
-            
-            <!-- Два разных события в один день -->
-            <div style="display: flex; flex-direction: column; gap: 15px; margin-bottom: 25px;">
-                <div style="background: rgba(197, 160, 89, 0.08); padding: 16px; border-radius: 10px; border: 1px solid var(--gold-light);">
-                    <p style="margin: 0 0 5px 0; font-size: 18px; font-family: 'Cormorant Garamond', serif; font-weight: 600; color: var(--primary);" data-ru="Беташар" data-kz="Беташар">Беташар</p>
-                    <p style="margin: 0; font-size: 16px; font-weight: 500;" data-ru="Начало в 17:00" data-kz="Басталуы 17:00">Начало в 17:00</p>
+            <h2 id="h-date" style="font-family: 'Cormorant Garamond', serif; font-size: 32px; color: var(--primary); margin-bottom: 20px;" data-ru="13 декабря 2026" data-kz="13 желтоқсан 2026">13 декабря 2026</h2>
+
+            <!-- Программа вечера (таймаут по пунктам) -->
+            <div class="program-box">
+                <div class="program-item">
+                    <div class="program-time">17:00</div>
+                    <div class="program-details">
+                        <h4 id="pr-1-title" data-ru="Беташар" data-kz="Беташар">Беташар</h4>
+                        <p id="pr-1-desc" data-ru="Традиционный обряд знакомства невесты с родными" data-kz="Қалыңдықты туыстармен таныстыру дәстүрі">Традиционный обряд знакомства невесты с родными</p>
+                    </div>
                 </div>
 
-                <div style="background: rgba(197, 160, 89, 0.08); padding: 16px; border-radius: 10px; border: 1px solid var(--gold-light);">
-                    <p style="margin: 0 0 5px 0; font-size: 18px; font-family: 'Cormorant Garamond', serif; font-weight: 600; color: var(--primary);" data-ru="Свадебный банкет" data-kz="Үйлену тойы">Свадебный банкет</p>
-                    <p style="margin: 0; font-size: 16px; font-weight: 500;" data-ru="Начало в 18:00" data-kz="Басталуы 18:00">Начало в 18:00</p>
+                <div class="program-item">
+                    <div class="program-time">18:00</div>
+                    <div class="program-details">
+                        <h4 id="pr-2-title" data-ru="Свадебный банкет" data-kz="Үйлену тойы">Свадебный банкет</h4>
+                        <p id="pr-2-desc" data-ru="Праздничный вечер, поздравления и торжество" data-kz="Мерекелік кеш, құттықтаулар мен той думан">Праздничный вечер, поздравления и торжество</p>
+                    </div>
+                </div>
+
+                <div class="program-item">
+                    <div class="program-time">19:30</div>
+                    <div class="program-details">
+                        <h4 id="pr-3-title" data-ru="Развлекательная программа" data-kz="Ойын-сауық бағдарламасы">Развлекательная программа</h4>
+                        <p id="pr-3-desc" data-ru="Танцы, музыка и праздничное настроение" data-kz="Би кеші, музыка және көңілді көңіл-күй">Танцы, музыка и праздничное настроение</p>
+                    </div>
                 </div>
             </div>
 
@@ -347,11 +401,6 @@
             <h2 id="h-venue-title" style="font-family: 'Cormorant Garamond', serif; font-size: 28px; color: var(--primary); margin-bottom: 10px;" data-ru="Место проведения" data-kz="Өтетін орны">Место проведения</h2>
             <p style="font-size: 20px; font-weight: 600; color: #222; margin-bottom: 5px;">Ресторан «Шахназ»</p>
             <p id="p-city" data-ru="г. Актау" data-kz="Ақтау қаласы">г. Актау</p>
-
-            <!-- Реальное фото здания/экстерьера из 2GIS -->
-            <div class="venue-img-container">
-                <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80" alt="Ресторан Шахназ">
-            </div>
 
             <a id="btn-gis" href="https://2gis.kz/aktau/geo/70000001092077313?inv_by=724627c74aab4fc6924e4efde3dad254&inv_ts=1793783729" target="_blank" class="btn" data-ru="Открыть в 2GIS" data-kz="2GIS-те ашу">Открыть в 2GIS</a>
         </section>
@@ -425,7 +474,7 @@
             });
         }
 
-        // Таймер обратного отсчета
+        // Таймер обратного отсчета (настроен на Беташар в 17:00)
         const weddingDate = new Date('2026-12-13T17:00:00');
 
         function updateCountdown() {
