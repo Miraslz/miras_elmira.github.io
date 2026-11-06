@@ -206,13 +206,6 @@
             transform: translateY(-2px);
         }
 
-        .btn:disabled {
-            background: #ccc;
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
-        }
-
         /* RSVP Form */
         form {
             background: #fff;
@@ -357,7 +350,10 @@
             <h2 id="h-rsvp-title" style="font-family: 'Cormorant Garamond', serif; font-size: 28px; color: var(--primary); margin-bottom: 10px;" data-ru="Подтверждение присутствия" data-kz="Қатысуды растау">Подтверждение присутствия</h2>
             <p id="p-rsvp-desc" data-ru="Пожалуйста, подтвердите ваше участие до 1 декабря 2026 г." data-kz="Қатысуыңызды 2026 жылдың 1 желтоқсанына дейін растауыңызды сұраймыз.">Пожалуйста, подтвердите ваше участие до 1 декабря 2026 г.</p>
 
-            <form id="rsvpForm" onsubmit="handleFormSubmit(event)">
+            <!-- Скрытый iframe для бесшовной отправки без редиректов -->
+            <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) { showSuccess(); }"></iframe>
+
+            <form id="rsvpForm" action="https://script.google.com/macros/s/AKfycbz9fUMRZbx3AH0_aolTMKstSjLqJinpe4nyV-orqvVmlXHQNqG3wyY6sZy2Ppq3wM79/exec" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
                 <div class="form-group">
                     <label id="lbl-name" class="form-label" data-ru="Ваше имя и фамилия" data-kz="Аты-жөніңіз">Ваше имя и фамилия</label>
                     <input type="text" name="name" required placeholder="Введите ваше имя...">
@@ -395,6 +391,7 @@
 
     <script>
         let currentLang = 'ru';
+        let submitted = false;
 
         // Переключение языков
         function setLang(lang) {
@@ -439,31 +436,10 @@
         setInterval(updateCountdown, 1000);
         updateCountdown();
 
-        // Отправка формы в Google Таблицу через Apps Script
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbz8FSoOb5Wmo9hjA6qYEm9iluJTDGSrTHD7jjD-2czbBC2UB6w5048BU0-QQKjNdJL1/exec';
-
-        function handleFormSubmit(e) {
-            e.preventDefault();
-            const btn = document.getElementById('btn-submit');
-            btn.disabled = true;
-            btn.textContent = currentLang === 'ru' ? 'Отправка...' : 'Жіберілуде...';
-
-            const form = document.getElementById('rsvpForm');
-            const formData = new FormData(form);
-
-            fetch(scriptURL, { 
-                method: 'POST', 
-                body: formData,
-                mode: 'no-cors'
-            })
-            .then(() => {
-                form.style.display = 'none';
-                document.getElementById('successMsg').style.display = 'block';
-            })
-            .catch(error => {
-                form.style.display = 'none';
-                document.getElementById('successMsg').style.display = 'block';
-            });
+        // Показ успешного сообщения после отправки
+        function showSuccess() {
+            document.getElementById('rsvpForm').style.display = 'none';
+            document.getElementById('successMsg').style.display = 'block';
         }
     </script>
 </body>
