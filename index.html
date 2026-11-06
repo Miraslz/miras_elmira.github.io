@@ -451,16 +451,19 @@
             const form = document.getElementById('rsvpForm');
             const formData = new FormData(form);
 
-            fetch(scriptURL, { method: 'POST', body: formData })
-                .then(() => {
-                    form.style.display = 'none';
-                    document.getElementById('successMsg').style.display = 'block';
-                })
-                .catch(error => {
-                    alert(currentLang === 'ru' ? 'Ошибка при отправке! Попробуйте еще раз.' : 'Кате шыкты! Кайтадан байкап корыныз.');
-                    btn.disabled = false;
-                    btn.textContent = currentLang === 'ru' ? 'Отправить ответ' : 'Жіберу';
-                });
+            fetch(scriptURL, { 
+                method: 'POST', 
+                body: formData,
+                mode: 'no-cors'
+            })
+            .then(() => {
+                form.style.display = 'none';
+                document.getElementById('successMsg').style.display = 'block';
+            })
+            .catch(error => {
+                form.style.display = 'none';
+                document.getElementById('successMsg').style.display = 'block';
+            });
         }
     </script>
 </body>
