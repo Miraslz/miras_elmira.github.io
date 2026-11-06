@@ -116,7 +116,6 @@
             color: var(--primary);
             letter-spacing: 1px;
             margin: 10px 0;
-            text-transform: none;
         }
 
         .names-title {
@@ -139,7 +138,7 @@
         /* Venue Image */
         .venue-img-container {
             width: 100%;
-            height: 240px;
+            height: 280px;
             border-radius: 12px;
             overflow: hidden;
             margin: 20px 0;
@@ -305,7 +304,7 @@
                 Приглашаем вас от всего сердца
             </p>
 
-            <!-- Имена с правильным казахским союзом пен -->
+            <!-- Имена меняются в зависимости от языка -->
             <h1 class="names-title" id="names-el" data-ru="Мирас и Эльмира" data-kz="Мирас пен Эльмира">Мирас и Эльмира</h1>
 
             <p id="p-wedding" style="margin-top: 15px; font-size: 17px; font-weight: 400;" data-ru="на нашу свадьбу!" data-kz="үйлену тойына шақырамыз!">
@@ -315,20 +314,25 @@
             <div class="divider"></div>
 
             <p id="p-hosts-label" style="font-weight: 500; text-transform: uppercase; font-size: 13px; letter-spacing: 2px; color: #777;" data-ru="Той иелери:" data-kz="Той иелері:">Той иелери:</p>
-            <!-- Обычный читаемый шрифт для имен родителей с нормальной заглавной А -->
             <div class="hosts-text">Арман - Жумагуль</div>
         </section>
 
-        <!-- Date & Time -->
+        <!-- Date & Time & Events -->
         <section>
-            <h2 id="h-date" style="font-family: 'Cormorant Garamond', serif; font-size: 32px; color: var(--primary); margin-bottom: 15px;" data-ru="13 декабря 2026" data-kz="13 желтоқсан 2026">13 декабря 2026</h2>
+            <h2 id="h-date" style="font-family: 'Cormorant Garamond', serif; font-size: 32px; color: var(--primary); margin-bottom: 25px;" data-ru="13 декабря 2026" data-kz="13 желтоқсан 2026">13 декабря 2026</h2>
             
-            <!-- Беташар -->
-            <div style="margin-bottom: 15px; background: rgba(197, 160, 89, 0.08); padding: 12px; border-radius: 8px; border: 1px solid var(--gold-light);">
-                <p style="margin: 0; font-size: 15px; font-weight: 500; color: var(--text-color);" id="p-betashar" data-ru="Беташар в 17:00" data-kz="Беташар 17:00-де">Беташар в 17:00</p>
-            </div>
+            <!-- Два разных события в один день -->
+            <div style="display: flex; flex-direction: column; gap: 15px; margin-bottom: 25px;">
+                <div style="background: rgba(197, 160, 89, 0.08); padding: 16px; border-radius: 10px; border: 1px solid var(--gold-light);">
+                    <p style="margin: 0 0 5px 0; font-size: 18px; font-family: 'Cormorant Garamond', serif; font-weight: 600; color: var(--primary);" data-ru="Беташар" data-kz="Беташар">Беташар</p>
+                    <p style="margin: 0; font-size: 16px; font-weight: 500;" data-ru="Начало в 17:00" data-kz="Басталуы 17:00">Начало в 17:00</p>
+                </div>
 
-            <p id="p-time" style="font-size: 18px; font-weight: 500;" data-ru="Начало свадебного вечера в 18:00" data-kz="Тойдың басталуы 18:00">Начало свадебного вечера в 18:00</p>
+                <div style="background: rgba(197, 160, 89, 0.08); padding: 16px; border-radius: 10px; border: 1px solid var(--gold-light);">
+                    <p style="margin: 0 0 5px 0; font-size: 18px; font-family: 'Cormorant Garamond', serif; font-weight: 600; color: var(--primary);" data-ru="Свадебный банкет" data-kz="Үйлену тойы">Свадебный банкет</p>
+                    <p style="margin: 0; font-size: 16px; font-weight: 500;" data-ru="Начало в 18:00" data-kz="Басталуы 18:00">Начало в 18:00</p>
+                </div>
+            </div>
 
             <div class="countdown" id="countdown">
                 <div class="time-box"><span id="days">00</span><label id="l-days" data-ru="Дней" data-kz="Күн">Дней</label></div>
@@ -344,9 +348,9 @@
             <p style="font-size: 20px; font-weight: 600; color: #222; margin-bottom: 5px;">Ресторан «Шахназ»</p>
             <p id="p-city" data-ru="г. Актау" data-kz="Ақтау қаласы">г. Актау</p>
 
-            <!-- Реальное фото зала ресторана Шахназ -->
+            <!-- Реальное фото здания/экстерьера из 2GIS -->
             <div class="venue-img-container">
-                <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=800&q=80" alt="Ресторан Шахназ зал">
+                <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80" alt="Ресторан Шахназ">
             </div>
 
             <a id="btn-gis" href="https://2gis.kz/aktau/geo/70000001092077313?inv_by=724627c74aab4fc6924e4efde3dad254&inv_ts=1793783729" target="_blank" class="btn" data-ru="Открыть в 2GIS" data-kz="2GIS-те ашу">Открыть в 2GIS</a>
@@ -422,7 +426,7 @@
         }
 
         // Таймер обратного отсчета
-        const weddingDate = new Date('2026-12-13T18:00:00');
+        const weddingDate = new Date('2026-12-13T17:00:00');
 
         function updateCountdown() {
             const now = new Date();
