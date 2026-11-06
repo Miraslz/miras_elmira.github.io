@@ -184,15 +184,17 @@
             color: #777;
         }
 
-        /* Location Button */
+        /* Button */
         .btn {
             display: inline-block;
             background: var(--primary);
             color: #fff;
             padding: 14px 32px;
+            border: none;
             border-radius: 30px;
             text-decoration: none;
             font-weight: 500;
+            font-size: 15px;
             letter-spacing: 1px;
             box-shadow: 0 4px 15px rgba(197, 160, 89, 0.3);
             transition: background 0.3s, transform 0.2s;
@@ -202,6 +204,13 @@
         .btn:hover {
             background: var(--primary-dark);
             transform: translateY(-2px);
+        }
+
+        .btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
         }
 
         /* RSVP Form */
@@ -261,11 +270,12 @@
             display: none;
             background: #eafaf1;
             color: #27ae60;
-            padding: 15px;
-            border-radius: 6px;
+            padding: 20px;
+            border-radius: 8px;
             text-align: center;
             font-weight: 500;
             margin-top: 15px;
+            border: 1px solid #a3e4d7;
         }
 
         footer {
@@ -347,7 +357,7 @@
             <h2 id="h-rsvp-title" style="font-family: 'Cormorant Garamond', serif; font-size: 28px; color: var(--primary); margin-bottom: 10px;" data-ru="Подтверждение присутствия" data-kz="Қатысуды растау">Подтверждение присутствия</h2>
             <p id="p-rsvp-desc" data-ru="Пожалуйста, подтвердите ваше участие до 1 декабря 2026 г." data-kz="Қатысуыңызды 2026 жылдың 1 желтоқсанына дейін растауыңызды сұраймыз.">Пожалуйста, подтвердите ваше участие до 1 декабря 2026 г.</p>
 
-            <form id="rsvpForm" action="#" onsubmit="handleFormSubmit(event)">
+            <form id="rsvpForm" onsubmit="handleFormSubmit(event)">
                 <div class="form-group">
                     <label id="lbl-name" class="form-label" data-ru="Ваше имя и фамилия" data-kz="Аты-жөніңіз">Ваше имя и фамилия</label>
                     <input type="text" name="name" required placeholder="Введите ваше имя...">
@@ -384,8 +394,11 @@
     </div>
 
     <script>
+        let currentLang = 'ru';
+
         // Переключение языков
         function setLang(lang) {
+            currentLang = lang;
             const buttons = document.querySelectorAll('.lang-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
 
@@ -426,11 +439,28 @@
         setInterval(updateCountdown, 1000);
         updateCountdown();
 
-        // Симуляция отправки формы
+        // Отправка формы в Google Таблицу через Apps Script
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbz8FSoOb5Wmo9hjA6qYEm9iluJTDGSrTHD7jjD-2czbBC2UB6w5048BU0-QQKjNdJL1/exec';
+
         function handleFormSubmit(e) {
             e.preventDefault();
-            document.getElementById('rsvpForm').style.display = 'none';
-            document.getElementById('successMsg').style.display = 'block';
+            const btn = document.getElementById('btn-submit');
+            btn.disabled = true;
+            btn.textContent = currentLang === 'ru' ? 'Отправка...' : 'Жіберілуде...';
+
+            const form = document.getElementById('rsvpForm');
+            const formData = new FormData(form);
+
+            fetch(scriptURL, { method: 'POST', body: formData })
+                .then(() => {
+                    form.style.display = 'none';
+                    document.getElementById('successMsg').style.display = 'block';
+                })
+                .catch(error => {
+                    alert(currentLang === 'ru' ? 'Ошибка при отправке! Попробуйте еще раз.' : 'Кате шыкты! Кайтадан байкап корыныз.');
+                    btn.disabled = false;
+                    btn.textContent = currentLang === 'ru' ? 'Отправить ответ' : 'Жіберу';
+                });
         }
     </script>
 </body>
