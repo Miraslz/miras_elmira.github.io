@@ -109,12 +109,14 @@
             font-weight: 300;
         }
 
-        .script-text {
-            font-family: 'Great Vibes', cursive;
-            font-size: 46px;
+        .hosts-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 26px;
+            font-weight: 600;
             color: var(--primary);
-            line-height: 1.2;
+            letter-spacing: 1px;
             margin: 10px 0;
+            text-transform: none;
         }
 
         .names-title {
@@ -137,7 +139,7 @@
         /* Venue Image */
         .venue-img-container {
             width: 100%;
-            height: 220px;
+            height: 240px;
             border-radius: 12px;
             overflow: hidden;
             margin: 20px 0;
@@ -295,7 +297,7 @@
                 <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&q=80" alt="Свадебные кольца">
             </div>
 
-            <p id="p-intro" style="font-size: 16px; line-height: 1.8;" data-ru="Дорогие родные, друзья и близкие! Совсем скоро состоится один из самых важных и особенных дней в нашей жизни, и мы хотим разделить эту радость с вами!" data-kz="Біздің балаларымыздың өміріндегі ең маңызды және ерекше күндердің бірі жақындап келеді, және осы қуанышымызды Сізбен бөліскіміз келеді!">
+            <p id="p-intro" style="font-size: 16px; line-height: 1.8;" data-ru="Дорогие родные, друзья и близкие! Совсем скоро состоится один из самых важных и особенных дней в нашей жизни, и мы хотим разделить эту радость с вами!" data-kz="Біздің өміріміздегі ең маңызды және ерекше күндердің бірі жақындап келеді, және осы қуанышымызды Сізбен бөліскіміз келеді!">
                 Дорогие родные, друзья и близкие! Совсем скоро состоится один из самых важных и особенных дней в нашей жизни, и мы хотим разделить эту радость с вами!
             </p>
 
@@ -303,10 +305,8 @@
                 Приглашаем вас от всего сердца
             </p>
 
-            <!-- Имена каллиграфическим шрифтом Great Vibes -->
-            <h1 class="names-title">Мирас</h1>
-            <p id="p-and" style="margin: -5px 0; font-family: 'Great Vibes', cursive; color: var(--primary); font-size: 28px;" data-ru="и" data-kz="мен">и</p>
-            <h1 class="names-title">Эльмира</h1>
+            <!-- Имена с правильным казахским союзом пен -->
+            <h1 class="names-title" id="names-el" data-ru="Мирас и Эльмира" data-kz="Мирас пен Эльмира">Мирас и Эльмира</h1>
 
             <p id="p-wedding" style="margin-top: 15px; font-size: 17px; font-weight: 400;" data-ru="на нашу свадьбу!" data-kz="үйлену тойына шақырамыз!">
                 на нашу свадьбу!
@@ -315,13 +315,20 @@
             <div class="divider"></div>
 
             <p id="p-hosts-label" style="font-weight: 500; text-transform: uppercase; font-size: 13px; letter-spacing: 2px; color: #777;" data-ru="Той иелери:" data-kz="Той иелері:">Той иелери:</p>
-            <h2 class="script-text">Арман - Жумагуль</h2>
+            <!-- Обычный читаемый шрифт для имен родителей с нормальной заглавной А -->
+            <div class="hosts-text">Арман - Жумагуль</div>
         </section>
 
         <!-- Date & Time -->
         <section>
-            <h2 id="h-date" style="font-family: 'Cormorant Garamond', serif; font-size: 32px; color: var(--primary); margin-bottom: 10px;" data-ru="13 декабря 2026" data-kz="13 желтоқсан 2026">13 декабря 2026</h2>
-            <p id="p-time" style="font-size: 18px; font-weight: 500;" data-ru="Начало в 18:00" data-kz="Басталуы 18:00">Начало в 18:00</p>
+            <h2 id="h-date" style="font-family: 'Cormorant Garamond', serif; font-size: 32px; color: var(--primary); margin-bottom: 15px;" data-ru="13 декабря 2026" data-kz="13 желтоқсан 2026">13 декабря 2026</h2>
+            
+            <!-- Беташар -->
+            <div style="margin-bottom: 15px; background: rgba(197, 160, 89, 0.08); padding: 12px; border-radius: 8px; border: 1px solid var(--gold-light);">
+                <p style="margin: 0; font-size: 15px; font-weight: 500; color: var(--text-color);" id="p-betashar" data-ru="Беташар в 17:00" data-kz="Беташар 17:00-де">Беташар в 17:00</p>
+            </div>
+
+            <p id="p-time" style="font-size: 18px; font-weight: 500;" data-ru="Начало свадебного вечера в 18:00" data-kz="Тойдың басталуы 18:00">Начало свадебного вечера в 18:00</p>
 
             <div class="countdown" id="countdown">
                 <div class="time-box"><span id="days">00</span><label id="l-days" data-ru="Дней" data-kz="Күн">Дней</label></div>
@@ -337,9 +344,9 @@
             <p style="font-size: 20px; font-weight: 600; color: #222; margin-bottom: 5px;">Ресторан «Шахназ»</p>
             <p id="p-city" data-ru="г. Актау" data-kz="Ақтау қаласы">г. Актау</p>
 
-            <!-- Фото ресторана -->
+            <!-- Реальное фото зала ресторана Шахназ -->
             <div class="venue-img-container">
-                <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=800&q=80" alt="Ресторан Шахназ">
+                <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=800&q=80" alt="Ресторан Шахназ зал">
             </div>
 
             <a id="btn-gis" href="https://2gis.kz/aktau/geo/70000001092077313?inv_by=724627c74aab4fc6924e4efde3dad254&inv_ts=1793783729" target="_blank" class="btn" data-ru="Открыть в 2GIS" data-kz="2GIS-те ашу">Открыть в 2GIS</a>
@@ -350,7 +357,7 @@
             <h2 id="h-rsvp-title" style="font-family: 'Cormorant Garamond', serif; font-size: 28px; color: var(--primary); margin-bottom: 10px;" data-ru="Подтверждение присутствия" data-kz="Қатысуды растау">Подтверждение присутствия</h2>
             <p id="p-rsvp-desc" data-ru="Пожалуйста, подтвердите ваше участие до 1 декабря 2026 г." data-kz="Қатысуыңызды 2026 жылдың 1 желтоқсанына дейін растауыңызды сұраймыз.">Пожалуйста, подтвердите ваше участие до 1 декабря 2026 г.</p>
 
-            <!-- Скрытый iframe для бесшовной отправки без редиректов -->
+            <!-- Скрытый iframe для отправки в Google Таблицу без редиректов -->
             <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) { showSuccess(); }"></iframe>
 
             <form id="rsvpForm" action="https://script.google.com/macros/s/AKfycbz9fUMRZbx3AH0_aolTMKstSjLqJinpe4nyV-orqvVmlXHQNqG3wyY6sZy2Ppq3wM79/exec" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
