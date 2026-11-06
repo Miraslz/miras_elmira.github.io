@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мирас & Эльмира — Приглашение на свадьбу</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #c5a059;
+            --primary-dark: #a37f3f;
+            --bg-color: #fcfbfa;
+            --text-color: #2c2c2c;
+            --gold-light: #f4ebd0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Language Switcher */
+        .lang-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid var(--primary);
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(197, 160, 89, 0.2);
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: none;
+            padding: 8px 16px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            color: var(--text-color);
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn.active {
+            background: var(--primary);
+            color: #fff;
+        }
+
+        /* Container */
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        /* Section styles */
+        section {
+            padding: 50px 0;
+            border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+        }
+
+        section:last-child {
+            border-bottom: none;
+        }
+
+        /* Typography */
+        p {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .script-text {
+            font-family: 'Great Vibes', cursive;
+            font-size: 48px;
+            color: var(--primary);
+            line-height: 1.2;
+            margin: 15px 0;
+        }
+
+        .names-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 42px;
+            font-weight: 600;
+            color: var(--primary);
+            letter-spacing: 2px;
+            margin: 10px 0;
+        }
+
+        .divider {
+            width: 1px;
+            height: 40px;
+            background-color: var(--primary);
+            margin: 25px auto;
+        }
+
+        /* Timer */
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .time-box {
+            background: #fff;
+            border: 1px solid var(--gold-light);
+            padding: 15px 10px;
+            border-radius: 8px;
+            min-width: 70px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+        }
+
+        .time-box span {
+            display: block;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .time-box label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #777;
+        }
+
+        /* Location Button */
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: #fff;
+            padding: 14px 32px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(197, 160, 89, 0.3);
+            transition: background 0.3s, transform 0.2s;
+            margin-top: 15px;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        /* RSVP Form */
+        form {
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid var(--gold-light);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label.form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #444;
+        }
+
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus, textarea:focus {
+            border-color: var(--primary);
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            margin-top: 8px;
+        }
+
+        .radio-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .success-msg {
+            display: none;
+            background: #eafaf1;
+            color: #27ae60;
+            padding: 15px;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: 500;
+            margin-top: 15px;
+        }
+
+        footer {
+            padding: 30px 0;
+            font-size: 13px;
+            color: #888;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Language Switcher -->
+    <div class="lang-switch">
+        <button class="lang-btn active" onclick="setLang('ru')">RU</button>
+        <button class="lang-btn" onclick="setLang('kz')">ҚАЗ</button>
+    </div>
+
+    <div class="container">
+        <!-- Invitation Intro -->
+        <section>
+            <p data-ru="Дорогие родные, друзья и близкие! Совсем скоро состоится один из самых важных и особенных дней в нашей жизни, и мы хотим разделить эту радость с вами!" data-kz="Біздің балаларымыздың өміріндегі ең маңызды және ерекше күндердің бірі жақындап келеді, және осы қуанышымызды Сізбен бөліскіміз келеді!">
+                Дорогие родные, друзья и близкие! Совсем скоро состоится один из самых важных и особенных дней в нашей жизни, и мы хотим разделить эту радость с вами!
+            </p>
+            <p data-ru="Приглашаем вас от всего сердца" data-kz="Сізді шын жүректен">
+                Приглашаем вас от всего сердца
+            </p>
+            
+            <h1 class="names-title">Мирас</h1>
+            <p style="margin: 5px 0; font-style: italic; color: var(--primary);" data-ru="и" data-kz="мен">и</p>
+            <h1 class="names-title">Эльмира</h1>
+            
+            <p style="margin-top: 20px;" data-ru="на нашу свадьбу!" data-kz="үйлену тойына шақырамыз!">
+                на нашу свадьбу!
+            </p>
+
+            <div class="divider"></div>
+
+            <p style="font-weight: 500; text-transform: uppercase; font-size: 13px; letter-spacing: 2px;" data-ru="Той иелери:" data-kz="Той иелері:">Той иелери:</p>
+            <h2 class="script-text" style="font-size: 38px;">Арман - Жумагуль</h2>
+        </section>
+
+        <!-- Date & Time -->
+        <section>
+            <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 32px; color: var(--primary); margin-bottom: 10px;" data-ru="13 декабря 2026" data-kz="13 желтоқсан 2026">13 декабря 2026</h2>
+            <p style="font-size: 18px; font-weight: 500;" data-ru="Начало в 18:00" data-kz="Басталуы 18:00">Начало в 18:00</p>
+            
+            <div class="countdown" id="countdown">
+                <div class="time-box"><span id="days">00</span><label data-ru="Дней" data-kz="Күн">Дней</label></div>
+                <div class="time-box"><span id="hours">00</span><label data-ru="Часов" data-kz="Сағат">Часов</label></div>
+                <div class="time-box"><span id="minutes">00</span><label data-ru="Минут" data-kz="Минут">Минут</label></div>
+                <div class="time-box"><span id="seconds">00</span><label data-ru="Секунд" data-kz="Секунд">Секунд</label></div>
+            </div>
+        </section>
+
+        <!-- Location -->
+        <section>
+            <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 28px; color: var(--primary); margin-bottom: 15px;" data-ru="Место проведения" data-kz="Өтетін орны">Место проведения</h2>
+            <p style="font-size: 20px; font-weight: 600; color: #222;">Ресторан «Шахназ»</p>
+            <p data-ru="г. Актау" data-kz="Ақтау қаласы">г. Актау</p>
+            <a href="https://2gis.kz/aktau/geo/70000001092077313?inv_by=724627c74aab4fc6924e4efde3dad254&inv_ts=1793783729" target="_blank" class="btn" data-ru="Открыть в 2GIS" data-kz="2GIS-те ашу">Открыть в 2GIS</a>
+        </section>
+
+        <!-- RSVP Form -->
+        <section>
+            <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 28px; color: var(--primary); margin-bottom: 10px;" data-ru="Подтверждение присутствия" data-kz="Қатысуды растау">Подтверждение присутствия</h2>
+            <p data-ru="Пожалуйста, подтвердите ваше участие до 1 декабря 2026 г." data-kz="Қатысуыңызды 2026 жылдың 1 желтоқсанына дейін растауыңызды сұраймыз.">Пожалуйста, подтвердите ваше участие до 1 декабря 2026 г.</p>
+            
+            <form id="rsvpForm" action="https://script.google.com/macros/s/AKfycbz.../exec" method="POST" onsubmit="handleFormSubmit(event)">
+                <div class="form-group">
+                    <label class="form-label" data-ru="Ваше имя и фамилия" data-kz="Аты-жөніңіз">Ваше имя и фамилия</label>
+                    <input type="text" name="name" required placeholder="Введите ваше имя...">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" data-ru="Сможете ли вы присутствовать?" data-kz="Тойға қатыса аласыз ба?">Сможете ли вы присутствовать?</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="status" value="Присутствует / Қатысады" checked> 
+                            <span data-ru="Буду(-ем) с радостью" data-kz="Міндетті түрде келемін">Буду(-ем) с радостью</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="status" value="Не сможет / Қатыса алмайды"> 
+                            <span data-ru="К сожалению, не смогу" data-kz="Өкінішке орай, келе алмаймын">К сожалению, не смогу</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" data-ru="Ваши пожелания молодоженам" data-kz="Жас жұбайларға тілегіңіз">Ваши пожелания молодоженам</label>
+                    <textarea name="message" rows="3" placeholder="Ваше теплое слово..."></textarea>
+                </div>
+
+                <button type="submit" class="btn" style="width: 100%; cursor: pointer;" data-ru="Отправить ответ" data-kz="Жіберу">Отправить ответ</button>
+            </form>
+            <div id="successMsg" class="success-msg" data-ru="Спасибо! Ваш ответ успешно отправлен." data-kz="Рақмет! Жауабыңыз сәтті жіберілді.">Спасибо! Ваш ответ успешно отправлен.</div>
+        </section>
+
+        <footer>
+            <p>Мирас & Эльмира • 13.12.2026</p>
+        </footer>
+    </div>
+
+    <script>
+        // Language Switcher Logic
+        function setLang(lang) {
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            if(lang === 'ru') {
+                document.querySelector('.lang-switch button:nth-child(1)').classList.add('active');
+            } else {
+                document.querySelector('.lang-switch button:nth-child(2)').classList.add('active');
+            }
+
+            document.querySelectorAll('[data-ru]').forEach(el => {
+                el.textContent = el.getAttribute(`data-${lang}`);
+            });
+        }
+
+        // Countdown Timer
+        const weddingDate = new Date('2026-12-13T18:00:00');
+
+        function updateCountdown() {
+            const now = new Date();
+            const diff = weddingDate - now;
+
+            if (diff > 0) {
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+                const minutes = Math.floor((diff / 1000 / 60) % 60);
+                const seconds = Math.floor((diff / 1000) % 60);
+
+                document.getElementById('days').textContent = String(days).padStart(2, '0');
+                document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+                document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+                document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+            }
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Form Submit Simulation
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            document.getElementById('rsvpForm').style.display = 'none';
+            document.getElementById('successMsg').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
