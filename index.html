@@ -228,14 +228,27 @@ function showSuccess(){
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target);}}),{threshold:.15});
 document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 
-// Музыка: вставь ссылку на mp3 (например, файл music.mp3 рядом с index.html)
-const MUSIC_URL='';
-if(MUSIC_URL){
-  const a=new Audio(MUSIC_URL);a.loop=true;
+// Музыка: файл music.mp3 лежит рядом с index.html. Первое касание запускает песню, кнопка ♪ — пауза/play
+(function(){
   const btn=document.getElementById('musicBtn');
   btn.style.display='block';
-  btn.onclick=()=>{if(a.paused){a.play();btn.classList.add('on');}else{a.pause();btn.classList.remove('on');}};
-}
+  const a=new Audio('music.mp3');
+  a.loop=true;a.preload='auto';
+  a.addEventListener('play',()=>btn.classList.add('on'));
+  a.addEventListener('pause',()=>btn.classList.remove('on'));
+  function stopAuto(){document.removeEventListener('touchend',first);document.removeEventListener('click',first);}
+  function first(e){
+    if(e.target.closest&&e.target.closest('#musicBtn'))return;
+    a.play().catch(()=>{});
+    stopAuto();
+  }
+  document.addEventListener('touchend',first);
+  document.addEventListener('click',first);
+  btn.addEventListener('click',()=>{
+    stopAuto();
+    if(a.paused)a.play().catch(()=>{});else a.pause();
+  });
+})();
 </script>
 </body>
 </html>
