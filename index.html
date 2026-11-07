@@ -1,506 +1,241 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мирас & Эльмира — Приглашение на свадьбу</title>
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #c5a059;
-            --primary-dark: #a37f3f;
-            --bg-color: #fcfbfa;
-            --text-color: #2c2c2c;
-            --gold-light: #f4ebd0;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Мирас & Эльмира — Приглашение на свадьбу</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--primary:#c5a059;--primary-dark:#a37f3f;--bg:#fcfbfa;--text:#2c2c2c;--gold-light:#f4ebd0;--mocha:#5b4a35}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background-color:var(--bg);color:var(--text);font-family:'Montserrat',sans-serif;line-height:1.6;overflow-x:hidden}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+/* Верхние кнопки */
+.lang-switch{position:fixed;top:16px;right:16px;z-index:1000;display:flex;background:rgba(255,255,255,.92);border:1px solid var(--primary);border-radius:30px;overflow:hidden;box-shadow:0 4px 15px rgba(0,0,0,.15)}
+.lang-btn{background:transparent;border:none;padding:8px 16px;font:600 14px 'Montserrat',sans-serif;cursor:pointer;color:var(--text);transition:.3s}
+.lang-btn.active{background:var(--primary);color:#fff}
+.music{position:fixed;top:16px;left:16px;z-index:1000;width:42px;height:42px;border-radius:50%;border:1px solid var(--primary);background:rgba(255,255,255,.92);color:var(--primary-dark);font-size:18px;cursor:pointer;box-shadow:0 4px 15px rgba(0,0,0,.15);display:none}
+.music.on{animation:spin 6s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: 'Montserrat', sans-serif;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+/* HERO */
+.hero{position:relative;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#fff;padding:90px 24px 70px;overflow:hidden;
+background:linear-gradient(rgba(20,14,6,.5),rgba(20,14,6,.68)),url('photo.jpg') center 65%/cover no-repeat}
+.hero>*{position:relative;z-index:2}
+.hero .pre{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;color:var(--gold-light)}
+.hero .name{font-family:'Great Vibes',cursive;font-size:clamp(64px,19vw,110px);line-height:1.05;color:#fff;text-shadow:0 3px 20px rgba(0,0,0,.5)}
+.hero .and{font-family:'Great Vibes',cursive;font-size:38px;color:var(--primary);margin:-4px 0}
+.hero .post{font-size:17px;margin-top:14px;font-weight:400;letter-spacing:1px}
+.hero .date{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:600;color:var(--gold-light);margin-top:26px;padding-top:18px;border-top:1px solid var(--primary);min-width:230px}
+.scroll{position:absolute;bottom:22px;left:50%;width:26px;height:42px;margin-left:-13px;border:2px solid rgba(255,255,255,.7);border-radius:14px;z-index:2}
+.scroll::after{content:"";position:absolute;top:7px;left:50%;width:4px;height:8px;margin-left:-2px;border-radius:2px;background:var(--primary);animation:dot 1.8s infinite}
+@keyframes dot{0%{opacity:0;transform:translateY(0)}30%{opacity:1}100%{opacity:0;transform:translateY(14px)}}
 
-        /* Language Switcher */
-        .lang-switch {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-            display: flex;
-            background: rgba(255, 255, 255, 0.95);
-            border: 1px solid var(--primary);
-            border-radius: 30px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(197, 160, 89, 0.2);
-        }
+/* Единственная анимация входа: имена появляются по очереди */
+.hero .pre,.hero .name,.hero .and,.hero .post,.hero .date{opacity:0;transform:translateY(18px);animation:in 1s ease forwards}
+.hero .pre{animation-delay:.2s}.hero .n1{animation-delay:.6s}.hero .and{animation-delay:1s}.hero .n2{animation-delay:1.3s}.hero .post{animation-delay:1.8s}.hero .date{animation-delay:2.2s}
+@keyframes in{to{opacity:1;transform:none}}
 
-        .lang-btn {
-            background: transparent;
-            border: none;
-            padding: 8px 16px;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            color: var(--text-color);
-            transition: all 0.3s ease;
-        }
+/* Лепестки */
+.petal{position:absolute;top:-20px;z-index:1;width:10px;height:14px;background:radial-gradient(circle at 30% 30%,#f4ebd0,var(--primary));border-radius:80% 0 80% 0;opacity:.8;animation:fall linear infinite}
+@keyframes fall{to{transform:translate(var(--dx),110vh) rotate(540deg)}}
 
-        .lang-btn.active {
-            background: var(--primary);
-            color: #fff;
-        }
+/* Контент */
+.container{max-width:600px;margin:0 auto;padding:10px 40px 40px;text-align:center}
+.wrap{position:relative}
+.wrap::before,.wrap::after{content:"";position:absolute;top:0;bottom:0;width:26px;background:url('orn-b.svg') center top/26px auto repeat-y;pointer-events:none}
+.wrap::before{left:6px}.wrap::after{right:6px}
+section{padding:44px 0 6px}
+section:not(:last-of-type)::after{content:"";display:block;height:26px;width:80%;margin:40px auto 0;background:url('orn-a-h.svg') center/auto 26px repeat-x}
+section:last-of-type{padding-bottom:30px}
+p{font-size:16px;color:#555;margin-bottom:20px;font-weight:300}
+h2.t{font-family:'Cormorant Garamond',serif;font-size:30px;color:var(--primary);margin-bottom:14px}
+.hosts-text{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:var(--primary);letter-spacing:1px;margin:10px 0}
+.role{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;color:#777;margin:16px 0 0}
+.hosts-text.big{font-size:32px}
+.divider{width:1px;height:40px;background:var(--primary);margin:25px auto}
+.program-box{background:#fff;padding:25px;border-radius:12px;border:1px solid var(--gold-light);box-shadow:0 5px 20px rgba(0,0,0,.04);text-align:left;margin:25px 0}
+.program-item{display:flex;gap:15px;margin-bottom:18px;padding-bottom:15px;border-bottom:1px dashed rgba(197,160,89,.3)}
+.program-item:last-child{margin:0;padding:0;border:none}
+.program-time{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--primary);min-width:65px}
+.program-details h4{font-size:16px;font-weight:600;color:#333;margin-bottom:3px}
+.program-details p{font-size:14px;color:#666;margin:0}
+.countdown{display:flex;justify-content:center;gap:10px;margin:30px 0}
+.time-box{background:#fff;border:1px solid var(--gold-light);padding:15px 8px;border-radius:8px;min-width:68px;box-shadow:0 5px 15px rgba(0,0,0,.04)}
+.time-box span{display:block;font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:var(--primary)}
+.time-box label{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:#777}
+.btn{display:inline-block;background:var(--primary);color:#fff;padding:14px 32px;border:none;border-radius:30px;text-decoration:none;font-weight:500;font-size:15px;letter-spacing:1px;box-shadow:0 4px 15px rgba(197,160,89,.35);transition:background .3s,transform .2s;margin-top:15px}
+.btn:hover{background:var(--primary-dark);transform:translateY(-2px)}
+form{background:#fff;padding:30px;border-radius:12px;border:1px solid var(--gold-light);box-shadow:0 10px 30px rgba(0,0,0,.04);text-align:left;margin-top:20px}
+.form-group{margin-bottom:20px}
+label.form-label{display:block;margin-bottom:8px;font-size:14px;font-weight:500;color:#444}
+input[type=text],textarea{width:100%;padding:12px;border:1px solid #ddd;border-radius:6px;font:14px 'Montserrat',sans-serif;outline:none;transition:border-color .3s}
+input[type=text]:focus,textarea:focus{border-color:var(--primary)}
+.radio-group{display:flex;flex-direction:column;gap:12px;margin-top:8px}
+.radio-label{display:flex;align-items:center;gap:10px;font-size:14px;cursor:pointer}
+.success-msg{display:none;background:#eafaf1;color:#27ae60;padding:20px;border-radius:8px;text-align:center;font-weight:500;margin-top:15px;border:1px solid #a3e4d7}
+.finale{position:relative;text-align:center;padding:100px 24px 90px;background:radial-gradient(ellipse at 50% 0%,rgba(255,255,255,.6),transparent 65%),linear-gradient(180deg,#f4e6b8,#e6d097);border-top:3px solid var(--primary)}
+.finale::before{content:"";position:absolute;inset:14px;border:1px solid rgba(138,106,43,.7);outline:1px solid rgba(138,106,43,.3);outline-offset:5px;pointer-events:none}
+.finale .edge{position:absolute;left:24px;right:24px;height:22px;background:url('orn-a-h-dark.svg') center/auto 22px repeat-x}
+.finale .edge.t{top:26px}.finale .edge.b{bottom:26px}
+.finale .fn{font-family:'Great Vibes',cursive;font-size:clamp(46px,13vw,72px);line-height:1.15;background:linear-gradient(180deg,#a8842f,#6e4f17);-webkit-background-clip:text;background-clip:text;color:transparent}
+.finale .band{height:44px;margin:18px auto;max-width:300px;background:url('orn-c-h-dark.svg') center/contain no-repeat}
+.finale .fd{font-family:'Cormorant Garamond',serif;font-size:26px;letter-spacing:5px;color:#6e4f17}
 
-        /* Container */
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            text-align: center;
-        }
-
-        /* Section styles */
-        section {
-            padding: 40px 0;
-            border-bottom: 1px solid rgba(197, 160, 89, 0.2);
-        }
-
-        section:last-child {
-            border-bottom: none;
-        }
-
-        /* Hero Image - Rings */
-        .hero-img-container {
-            width: 190px;
-            height: 190px;
-            margin: 0 auto 25px auto;
-            border-radius: 50%;
-            overflow: hidden;
-            border: 3px solid var(--primary);
-            box-shadow: 0 8px 25px rgba(197, 160, 89, 0.3);
-            padding: 5px;
-            background: #fff;
-        }
-
-        .hero-img-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
-            display: block;
-        }
-
-        /* Typography */
-        p {
-            font-size: 16px;
-            color: #555;
-            margin-bottom: 20px;
-            font-weight: 300;
-        }
-
-        .hosts-text {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 26px;
-            font-weight: 600;
-            color: var(--primary);
-            letter-spacing: 1px;
-            margin: 10px 0;
-        }
-
-        .names-title {
-            font-family: 'Great Vibes', cursive;
-            font-size: 58px;
-            font-weight: 400;
-            color: var(--primary);
-            letter-spacing: 1px;
-            line-height: 1.1;
-            margin: 5px 0;
-            text-shadow: 0 2px 4px rgba(197, 160, 89, 0.15);
-        }
-
-        .name-and {
-            font-family: 'Great Vibes', cursive;
-            color: var(--primary);
-            font-size: 32px;
-            margin: -5px 0;
-        }
-
-        .divider {
-            width: 1px;
-            height: 40px;
-            background-color: var(--primary);
-            margin: 25px auto;
-        }
-
-        /* Program / Timeline */
-        .program-box {
-            background: #fff;
-            padding: 25px;
-            border-radius: 12px;
-            border: 1px solid var(--gold-light);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
-            text-align: left;
-            margin: 25px 0;
-        }
-
-        .program-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 15px;
-            margin-bottom: 18px;
-            padding-bottom: 15px;
-            border-bottom: 1px dashed rgba(197, 160, 89, 0.3);
-        }
-
-        .program-item:last-child {
-            margin-bottom: 0;
-            padding-bottom: 0;
-            border-bottom: none;
-        }
-
-        .program-time {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 22px;
-            font-weight: 600;
-            color: var(--primary);
-            min-width: 65px;
-        }
-
-        .program-details h4 {
-            font-size: 16px;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 3px;
-        }
-
-        .program-details p {
-            font-size: 14px;
-            color: #666;
-            margin: 0;
-        }
-
-        /* Timer */
-        .countdown {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin: 30px 0;
-        }
-
-        .time-box {
-            background: #fff;
-            border: 1px solid var(--gold-light);
-            padding: 15px 10px;
-            border-radius: 8px;
-            min-width: 70px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
-        }
-
-        .time-box span {
-            display: block;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 28px;
-            font-weight: 600;
-            color: var(--primary);
-        }
-
-        .time-box label {
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #777;
-        }
-
-        /* Button */
-        .btn {
-            display: inline-block;
-            background: var(--primary);
-            color: #fff;
-            padding: 14px 32px;
-            border: none;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 15px;
-            letter-spacing: 1px;
-            box-shadow: 0 4px 15px rgba(197, 160, 89, 0.3);
-            transition: background 0.3s, transform 0.2s;
-            margin-top: 15px;
-        }
-
-        .btn:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-        }
-
-        /* RSVP Form */
-        form {
-            background: #fff;
-            padding: 30px;
-            border-radius: 12px;
-            border: 1px solid var(--gold-light);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-            text-align: left;
-            margin-top: 20px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        label.form-label {
-            display: block;
-            margin-bottom: 8px;
-            font-size: 14px;
-            font-weight: 500;
-            color: #444;
-        }
-
-        input[type="text"], textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 14px;
-            outline: none;
-            transition: border-color 0.3s;
-        }
-
-        input[type="text"]:focus, textarea:focus {
-            border-color: var(--primary);
-        }
-
-        .radio-group {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-top: 8px;
-        }
-
-        .radio-label {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 14px;
-            cursor: pointer;
-        }
-
-        .success-msg {
-            display: none;
-            background: #eafaf1;
-            color: #27ae60;
-            padding: 20px;
-            border-radius: 8px;
-            text-align: center;
-            font-weight: 500;
-            margin-top: 15px;
-            border: 1px solid #a3e4d7;
-        }
-
-        footer {
-            padding: 30px 0;
-            font-size: 13px;
-            color: #888;
-            letter-spacing: 1px;
-        }
-    </style>
+/* Появление блоков при прокрутке */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s ease}
+.rv.show{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.petal{display:none}.rv{opacity:1;transform:none;transition:none}.hero *{animation-duration:.01s!important;animation-delay:0s!important}}
+</style>
 </head>
 <body>
 
-    <!-- Language Switcher -->
-    <div class="lang-switch">
-        <button type="button" class="lang-btn active" onclick="setLang('ru')">RU</button>
-        <button type="button" class="lang-btn" onclick="setLang('kz')">ҚАЗ</button>
+<div class="lang-switch">
+  <button type="button" class="lang-btn active" onclick="setLang('ru')">RU</button>
+  <button type="button" class="lang-btn" onclick="setLang('kz')">ҚАЗ</button>
+</div>
+<button type="button" class="music" id="musicBtn" aria-label="Музыка">♪</button>
+
+<header class="hero" id="hero">
+  <div class="pre" data-ru="Приглашаем вас от всего сердца" data-kz="Сізді шын жүректен">Приглашаем вас от всего сердца</div>
+  <div class="name n1">Мирас</div>
+  <div class="and" data-ru="и" data-kz="пен">и</div>
+  <div class="name n2">Эльмира</div>
+  <div class="post" data-ru="на нашу свадьбу!" data-kz="үйлену тойына шақырамыз!">на нашу свадьбу!</div>
+  <div class="date" data-ru="13 декабря 2026" data-kz="13 желтоқсан 2026">13 декабря 2026</div>
+  <div class="scroll"></div>
+</header>
+
+<div class="wrap">
+<div class="container">
+  <section class="rv">
+    <p style="line-height:1.8" data-ru="Дорогие родные, друзья и близкие! Совсем скоро состоится один из самых важных и особенных дней в нашей жизни, и мы хотим разделить эту радость с вами!" data-kz="Біздің өміріміздегі ең маңызды және ерекше күндердің бірі жақындап келеді, және осы қуанышымызды Сізбен бөліскіміз келеді!">Дорогие родные, друзья и близкие! Совсем скоро состоится один из самых важных и особенных дней в нашей жизни, и мы хотим разделить эту радость с вами!</p>
+    <div class="divider"></div>
+    <p style="font-weight:500;text-transform:uppercase;font-size:13px;letter-spacing:2px;color:#777;margin-bottom:6px" data-ru="Той иелери:" data-kz="Той иелері:">Той иелери:</p>
+    <div class="role" data-ru="Бабушка и дедушка" data-kz="Әже мен ата">Бабушка и дедушка</div>
+    <div class="hosts-text big">Қуанғали - Қибарат</div>
+    <div class="role" data-ru="Родители" data-kz="Ата-ана">Родители</div>
+    <div class="hosts-text">Арман - Жумагуль</div>
+  </section>
+
+  <section class="rv">
+    <h2 class="t" data-ru="13 декабря 2026" data-kz="13 желтоқсан 2026">13 декабря 2026</h2>
+    <div class="program-box">
+      <div class="program-item"><div class="program-time">17:00</div><div class="program-details"><h4 data-ru="Беташар" data-kz="Беташар">Беташар</h4><p data-ru="Традиционный обряд знакомства невесты с родными" data-kz="Қалыңдықты туыстармен таныстыру дәстүрі">Традиционный обряд знакомства невесты с родными</p></div></div>
+      <div class="program-item"><div class="program-time">18:00</div><div class="program-details"><h4 data-ru="Свадебный банкет" data-kz="Үйлену тойы">Свадебный банкет</h4><p data-ru="Праздничный вечер, поздравления и торжество" data-kz="Мерекелік кеш, құттықтаулар мен той думан">Праздничный вечер, поздравления и торжество</p></div></div>
+      <div class="program-item"><div class="program-time">19:30</div><div class="program-details"><h4 data-ru="Развлекательная программа" data-kz="Ойын-сауық бағдарламасы">Развлекательная программа</h4><p data-ru="Танцы, музыка и праздничное настроение" data-kz="Би кеші, музыка және көңілді көңіл-күй">Танцы, музыка и праздничное настроение</p></div></div>
     </div>
-
-    <div class="container">
-        <!-- Invitation Intro -->
-        <section>
-            <div class="hero-img-container">
-                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&q=80" alt="Свадебные кольца">
-            </div>
-
-            <p id="p-intro" style="font-size: 16px; line-height: 1.8;" data-ru="Дорогие родные, друзья и близкие! Совсем скоро состоится один из самых важных и особенных дней в нашей жизни, и мы хотим разделить эту радость с вами!" data-kz="Біздің өміріміздегі ең маңызды және ерекше күндердің бірі жақындап келеді, және осы қуанышымызды Сізбен бөліскіміз келеді!">
-                Дорогие родные, друзья и близкие! Совсем скоро состоится один из самых важных и особенных дней в нашей жизни, и мы хотим разделить эту радость с вами!
-            </p>
-
-            <p id="p-invite" style="margin-top: 20px;" data-ru="Приглашаем вас от всего сердца" data-kz="Сізді шын жүректен">
-                Приглашаем вас от всего сердца
-            </p>
-
-            <!-- Имена в три отдельные строки строго по языкам -->
-            <div style="margin: 15px 0;">
-                <div class="names-title">Мирас</div>
-                <div class="name-and" id="name-conj" data-ru="и" data-kz="пен">и</div>
-                <div class="names-title">Эльмира</div>
-            </div>
-
-            <p id="p-wedding" style="margin-top: 15px; font-size: 17px; font-weight: 400;" data-ru="на нашу свадьбу!" data-kz="үйлену тойына шақырамыз!">
-                на нашу свадьбу!
-            </p>
-
-            <div class="divider"></div>
-
-            <p id="p-hosts-label" style="font-weight: 500; text-transform: uppercase; font-size: 13px; letter-spacing: 2px; color: #777;" data-ru="Той иелери:" data-kz="Той иелері:">Той иелери:</p>
-            <div class="hosts-text">Арман - Жумагуль</div>
-        </section>
-
-        <!-- Date & Program -->
-        <section>
-            <h2 id="h-date" style="font-family: 'Cormorant Garamond', serif; font-size: 32px; color: var(--primary); margin-bottom: 20px;" data-ru="13 декабря 2026" data-kz="13 желтоқсан 2026">13 декабря 2026</h2>
-
-            <!-- Программа вечера (таймаут по пунктам) -->
-            <div class="program-box">
-                <div class="program-item">
-                    <div class="program-time">17:00</div>
-                    <div class="program-details">
-                        <h4 id="pr-1-title" data-ru="Беташар" data-kz="Беташар">Беташар</h4>
-                        <p id="pr-1-desc" data-ru="Традиционный обряд знакомства невесты с родными" data-kz="Қалыңдықты туыстармен таныстыру дәстүрі">Традиционный обряд знакомства невесты с родными</p>
-                    </div>
-                </div>
-
-                <div class="program-item">
-                    <div class="program-time">18:00</div>
-                    <div class="program-details">
-                        <h4 id="pr-2-title" data-ru="Свадебный банкет" data-kz="Үйлену тойы">Свадебный банкет</h4>
-                        <p id="pr-2-desc" data-ru="Праздничный вечер, поздравления и торжество" data-kz="Мерекелік кеш, құттықтаулар мен той думан">Праздничный вечер, поздравления и торжество</p>
-                    </div>
-                </div>
-
-                <div class="program-item">
-                    <div class="program-time">19:30</div>
-                    <div class="program-details">
-                        <h4 id="pr-3-title" data-ru="Развлекательная программа" data-kz="Ойын-сауық бағдарламасы">Развлекательная программа</h4>
-                        <p id="pr-3-desc" data-ru="Танцы, музыка и праздничное настроение" data-kz="Би кеші, музыка және көңілді көңіл-күй">Танцы, музыка и праздничное настроение</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="countdown" id="countdown">
-                <div class="time-box"><span id="days">00</span><label id="l-days" data-ru="Дней" data-kz="Күн">Дней</label></div>
-                <div class="time-box"><span id="hours">00</span><label id="l-hours" data-ru="Часов" data-kz="Сағат">Часов</label></div>
-                <div class="time-box"><span id="minutes">00</span><label id="l-minutes" data-ru="Минут" data-kz="Минут">Минут</label></div>
-                <div class="time-box"><span id="seconds">00</span><label id="l-seconds" data-ru="Секунд" data-kz="Секунд">Секунд</label></div>
-            </div>
-        </section>
-
-        <!-- Location -->
-        <section>
-            <h2 id="h-venue-title" style="font-family: 'Cormorant Garamond', serif; font-size: 28px; color: var(--primary); margin-bottom: 10px;" data-ru="Место проведения" data-kz="Өтетін орны">Место проведения</h2>
-            <p style="font-size: 20px; font-weight: 600; color: #222; margin-bottom: 5px;">Ресторан «Шахназ»</p>
-            <p id="p-city" data-ru="г. Актау" data-kz="Ақтау қаласы">г. Актау</p>
-
-            <a id="btn-gis" href="https://2gis.kz/aktau/geo/70000001092077313?inv_by=724627c74aab4fc6924e4efde3dad254&inv_ts=1793783729" target="_blank" class="btn" data-ru="Открыть в 2GIS" data-kz="2GIS-те ашу">Открыть в 2GIS</a>
-        </section>
-
-        <!-- RSVP Form -->
-        <section>
-            <h2 id="h-rsvp-title" style="font-family: 'Cormorant Garamond', serif; font-size: 28px; color: var(--primary); margin-bottom: 10px;" data-ru="Подтверждение присутствия" data-kz="Қатысуды растау">Подтверждение присутствия</h2>
-            <p id="p-rsvp-desc" data-ru="Пожалуйста, подтвердите ваше участие до 1 декабря 2026 г." data-kz="Қатысуыңызды 2026 жылдың 1 желтоқсанына дейін растауыңызды сұраймыз.">Пожалуйста, подтвердите ваше участие до 1 декабря 2026 г.</p>
-
-            <!-- Скрытый iframe для отправки в Google Таблицу без редиректов -->
-            <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) { showSuccess(); }"></iframe>
-
-            <form id="rsvpForm" action="https://script.google.com/macros/s/AKfycbz9fUMRZbx3AH0_aolTMKstSjLqJinpe4nyV-orqvVmlXHQNqG3wyY6sZy2Ppq3wM79/exec" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
-                <div class="form-group">
-                    <label id="lbl-name" class="form-label" data-ru="Ваше имя и фамилия" data-kz="Аты-жөніңіз">Ваше имя и фамилия</label>
-                    <input type="text" name="name" required placeholder="Введите ваше имя...">
-                </div>
-
-                <div class="form-group">
-                    <label id="lbl-status" class="form-label" data-ru="Сможете ли вы присутствовать?" data-kz="Тойға қатыса аласыз ба?">Сможете ли вы присутствовать?</label>
-                    <div class="radio-group">
-                        <label class="radio-label">
-                            <input type="radio" name="status" value="Присутствует / Қатысады" checked>
-                            <span id="opt-yes" data-ru="Буду(-ем) с радостью" data-kz="Міндетті түрде келемін">Буду(-ем) с радостью</span>
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="status" value="Не сможет / Қатыса алмайды">
-                            <span id="opt-no" data-ru="К сожалению, не смогу" data-kz="Өкінішке орай, келе алмаймын">К сожалению, не смогу</span>
-                        </label>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label id="lbl-msg" class="form-label" data-ru="Ваши пожелания молодоженам" data-kz="Жас жұбайларға тілегіңіз">Ваши пожелания молодоженам</label>
-                    <textarea name="message" rows="3" placeholder="Ваше теплое слово..."></textarea>
-                </div>
-
-                <button id="btn-submit" type="submit" class="btn" style="width: 100%; cursor: pointer;" data-ru="Отправить ответ" data-kz="Жіберу">Отправить ответ</button>
-            </form>
-
-            <div id="successMsg" class="success-msg" data-ru="Спасибо! Ваш ответ успешно отправлен." data-kz="Рақмет! Жауабыңыз сәтті жіберілді.">Спасибо! Ваш ответ успешно отправлен.</div>
-        </section>
-
-        <footer>
-            <p>Мирас & Эльмира • 13.12.2026</p>
-        </footer>
+    <div class="countdown">
+      <div class="time-box"><span id="days">00</span><label data-ru="Дней" data-kz="Күн">Дней</label></div>
+      <div class="time-box"><span id="hours">00</span><label data-ru="Часов" data-kz="Сағат">Часов</label></div>
+      <div class="time-box"><span id="minutes">00</span><label data-ru="Минут" data-kz="Минут">Минут</label></div>
+      <div class="time-box"><span id="seconds">00</span><label data-ru="Секунд" data-kz="Секунд">Секунд</label></div>
     </div>
+  </section>
 
-    <script>
-        let currentLang = 'ru';
-        let submitted = false;
+  <section class="rv">
+    <h2 class="t" data-ru="Место проведения" data-kz="Өтетін орны">Место проведения</h2>
+    <p style="font-size:20px;font-weight:600;color:#222;margin-bottom:5px">Ресторан «Шахназ»</p>
+    <p data-ru="г. Актау" data-kz="Ақтау қаласы">г. Актау</p>
+    <a href="https://2gis.kz/aktau/geo/70000001092077313?inv_by=724627c74aab4fc6924e4efde3dad254&inv_ts=1793783729" target="_blank" rel="noopener" class="btn" data-ru="Открыть в 2GIS" data-kz="2GIS-те ашу">Открыть в 2GIS</a>
+  </section>
 
-        // Переключение языков
-        function setLang(lang) {
-            currentLang = lang;
-            const buttons = document.querySelectorAll('.lang-btn');
-            buttons.forEach(btn => btn.classList.remove('active'));
+  <section class="rv">
+    <h2 class="t" data-ru="Подтверждение присутствия" data-kz="Қатысуды растау">Подтверждение присутствия</h2>
+    <p data-ru="Пожалуйста, подтвердите ваше участие до 1 декабря 2026 г." data-kz="Қатысуыңызды 2026 жылдың 1 желтоқсанына дейін растауыңызды сұраймыз.">Пожалуйста, подтвердите ваше участие до 1 декабря 2026 г.</p>
+    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none" onload="if(submitted){showSuccess();}"></iframe>
+    <form id="rsvpForm" action="https://script.google.com/macros/s/AKfycbz9fUMRZbx3AH0_aolTMKstSjLqJinpe4nyV-orqvVmlXHQNqG3wyY6sZy2Ppq3wM79/exec" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
+      <div class="form-group">
+        <label class="form-label" data-ru="Ваше имя и фамилия" data-kz="Аты-жөніңіз">Ваше имя и фамилия</label>
+        <input type="text" name="name" required placeholder="Введите ваше имя...">
+      </div>
+      <div class="form-group">
+        <label class="form-label" data-ru="Сможете ли вы присутствовать?" data-kz="Тойға қатыса аласыз ба?">Сможете ли вы присутствовать?</label>
+        <div class="radio-group">
+          <label class="radio-label"><input type="radio" name="status" value="Присутствует / Қатысады" checked><span data-ru="Буду(-ем) с радостью" data-kz="Міндетті түрде келемін">Буду(-ем) с радостью</span></label>
+          <label class="radio-label"><input type="radio" name="status" value="Придёт с женой/девушкой / Жұбайымен келеді"><span data-ru="Буду с женой / девушкой" data-kz="Жұбайыммен / сүйіктіммен келемін">Буду с женой / девушкой</span></label>
+          <label class="radio-label"><input type="radio" name="status" value="Не сможет / Қатыса алмайды"><span data-ru="К сожалению, не смогу" data-kz="Өкінішке орай, келе алмаймын">К сожалению, не смогу</span></label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label" data-ru="Ваши пожелания молодоженам" data-kz="Жас жұбайларға тілегіңіз">Ваши пожелания молодоженам</label>
+        <textarea name="message" rows="3" placeholder="Ваше теплое слово..."></textarea>
+      </div>
+      <button type="submit" class="btn" style="width:100%;cursor:pointer" data-ru="Отправить ответ" data-kz="Жіберу">Отправить ответ</button>
+    </form>
+    <div id="successMsg" class="success-msg" data-ru="Спасибо! Ваш ответ успешно отправлен." data-kz="Рақмет! Жауабыңыз сәтті жіберілді.">Спасибо! Ваш ответ успешно отправлен.</div>
+  </section>
 
-            if (lang === 'ru') {
-                buttons[0].classList.add('active');
-            } else {
-                buttons[1].classList.add('active');
-            }
+</div>
+</div>
 
-            const elements = document.querySelectorAll('[data-ru]');
-            elements.forEach(el => {
-                const text = el.getAttribute(`data-${lang}`);
-                if (text) {
-                    el.textContent = text;
-                }
-            });
-        }
+<footer class="finale">
+  <div class="edge t"></div><div class="edge b"></div>
+  <div class="fn">Мирас & Эльмира</div>
+  <div class="band"></div>
+  <div class="fd">13.12.2026</div>
+</footer>
 
-        // Таймер обратного отсчета (настроен на Беташар в 17:00)
-        const weddingDate = new Date('2026-12-13T17:00:00');
+<script>
+let submitted=false;
 
-        function updateCountdown() {
-            const now = new Date();
-            const diff = weddingDate - now;
+// Язык
+function setLang(lang){
+  const b=document.querySelectorAll('.lang-btn');
+  b.forEach(x=>x.classList.remove('active'));
+  b[lang==='ru'?0:1].classList.add('active');
+  document.documentElement.lang=lang==='ru'?'ru':'kk';
+  document.querySelectorAll('[data-ru]').forEach(el=>{const t=el.getAttribute('data-'+lang);if(t)el.textContent=t;});
+}
 
-            if (diff > 0) {
-                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-                const minutes = Math.floor((diff / 1000 / 60) % 60);
-                const seconds = Math.floor((diff / 1000) % 60);
+// Таймер до Беташара
+const weddingDate=new Date('2026-12-13T17:00:00');
+function updateCountdown(){
+  const diff=weddingDate-new Date();
+  if(diff<=0)return;
+  const set=(id,v)=>document.getElementById(id).textContent=String(v).padStart(2,'0');
+  set('days',Math.floor(diff/864e5));
+  set('hours',Math.floor(diff/36e5)%24);
+  set('minutes',Math.floor(diff/6e4)%60);
+  set('seconds',Math.floor(diff/1e3)%60);
+}
+setInterval(updateCountdown,1000);updateCountdown();
 
-                document.getElementById('days').textContent = String(days).padStart(2, '0');
-                document.getElementById('hours').textContent = String(hours).padStart(2, '0');
-                document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
-                document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
-            }
-        }
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
+function showSuccess(){
+  document.getElementById('rsvpForm').style.display='none';
+  document.getElementById('successMsg').style.display='block';
+}
 
-        // Показ успешного сообщения после отправки
-        function showSuccess() {
-            document.getElementById('rsvpForm').style.display = 'none';
-            document.getElementById('successMsg').style.display = 'block';
-        }
-    </script>
+// Золотые лепестки в шапке
+(function(){
+  const hero=document.getElementById('hero');
+  for(let i=0;i<16;i++){
+    const p=document.createElement('span');
+    p.className='petal';
+    p.style.left=Math.random()*100+'%';
+    p.style.setProperty('--dx',(Math.random()*120-60)+'px');
+    p.style.animationDuration=(7+Math.random()*7)+'s';
+    p.style.animationDelay=(-Math.random()*12)+'s';
+    p.style.transform='scale('+(.6+Math.random()*.9)+')';
+    hero.appendChild(p);
+  }
+})();
+
+// Плавное появление блоков
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target);}}),{threshold:.15});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+// Музыка: вставь ссылку на mp3 (например, файл music.mp3 рядом с index.html)
+const MUSIC_URL='';
+if(MUSIC_URL){
+  const a=new Audio(MUSIC_URL);a.loop=true;
+  const btn=document.getElementById('musicBtn');
+  btn.style.display='block';
+  btn.onclick=()=>{if(a.paused){a.play();btn.classList.add('on');}else{a.pause();btn.classList.remove('on');}};
+}
+</script>
 </body>
 </html>
