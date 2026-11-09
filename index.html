@@ -6,7 +6,7 @@
 <title>Мирас & Эльмира — Приглашение на свадьбу</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{--primary:#c5a059;--primary-dark:#a37f3f;--bg:#fcfbfa;--text:#2c2c2c;--gold-light:#f4ebd0;--mocha:#5b4a35}
 *{margin:0;padding:0;box-sizing:border-box}
@@ -23,21 +23,32 @@ body{background-color:var(--bg);color:var(--text);font-family:'Montserrat',sans-
 
 /* HERO */
 .hero{position:relative;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#fff;padding:80px 24px 90px;overflow:hidden;
-background:linear-gradient(rgba(20,14,6,.55),rgba(20,14,6,.7)),url('IMG_7808.jpeg') center 65%/cover no-repeat}
+background:linear-gradient(rgba(20,14,6,.6),rgba(20,14,6,.75)),url('IMG_7808.jpeg') center 65%/cover no-repeat}
 .hero>*{position:relative;z-index:2}
-.hero .pre{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:24px;color:var(--gold-light);margin-bottom:12px}
-.hero .name{font-family:'Great Vibes',cursive;font-size:clamp(64px,19vw,110px);line-height:1.05;color:#fff;text-shadow:0 3px 20px rgba(0,0,0,.5)}
-.hero .date-box{margin-top:35px;padding-top:18px;border-top:1px solid var(--primary);min-width:240px}
-.hero .date{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:600;color:var(--gold-light)}
+
+/* Монограмма М & Э */
+.monogram{font-family:'Great Vibes',cursive;font-size:clamp(50px,12vw,80px);color:var(--gold-light);line-height:1;margin-bottom:10px;text-shadow:0 2px 10px rgba(0,0,0,.4)}
+.monogram span{color:var(--primary);font-size:.8em}
+
+.hero .full-names{font-family:'Great Vibes',cursive;font-size:clamp(54px,15vw,90px);line-height:1.1;color:#fff;text-shadow:0 3px 20px rgba(0,0,0,.5);margin:10px 0}
+.hero .date-dots{font-family:'Cormorant Garamond',serif;font-size:clamp(22px,6vw,32px);font-weight:600;color:var(--gold-light);letter-spacing:6px;margin-top:15px;padding-top:15px;border-top:1px solid rgba(197,160,89,.6);min-width:260px}
+
 .scroll-t{position:absolute;bottom:55px;left:0;right:0;text-align:center;font-size:12px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.85);z-index:2;opacity:0;animation:in 1s ease 2.2s forwards}
 .scroll{position:absolute;bottom:15px;left:50%;width:24px;height:36px;margin-left:-12px;border:2px solid rgba(255,255,255,.7);border-radius:12px;z-index:2}
 .scroll::after{content:"";position:absolute;top:6px;left:50%;width:4px;height:7px;margin-left:-2px;border-radius:2px;background:var(--primary);animation:dot 1.8s infinite}
 @keyframes dot{0%{opacity:0;transform:translateY(0)}30%{opacity:1}100%{opacity:0;transform:translateY(12px)}}
 
 /* Анимация входа */
-.hero .pre,.hero .name,.hero .date-box{opacity:0;transform:translateY(18px);animation:in 1s ease forwards}
-.hero .pre{animation-delay:.2s}.hero .n1{animation-delay:.6s}.hero .n2{animation-delay:1.1s}.hero .date-box{animation-delay:1.6s}
+.hero .monogram,.hero .full-names,.hero .date-dots{opacity:0;transform:translateY(18px);animation:in 1s ease forwards}
+.hero .monogram{animation-delay:.2s}.hero .full-names{animation-delay:.7s}.hero .date-dots{animation-delay:1.2s}
 @keyframes in{to{opacity:1;transform:none}}
+
+/* Блок текста приглашения */
+.invite-block{margin:20px 0}
+.invite-pre{font-size:15px;line-height:1.8;color:#555;font-weight:300}
+.invite-you{font-weight:700;font-size:18px;letter-spacing:3px;color:var(--primary);margin:20px 0 10px;text-transform:uppercase}
+.invite-couple{font-family:'Great Vibes',cursive;font-size:46px;color:var(--primary-dark);margin:5px 0}
+.invite-post{font-weight:600;font-size:16px;letter-spacing:2px;color:#333;margin-top:10px;text-transform:uppercase}
 
 /* Контент */
 .container{max-width:600px;margin:0 auto;padding:10px 30px 40px;text-align:center}
@@ -83,16 +94,17 @@ input[type=text]:focus,textarea:focus{border-color:var(--primary)}
 @keyframes mq{to{transform:translateX(-50%)}}
 
 /* Календарь */
-.cal{background:#fff;border:1px solid var(--gold-light);border-radius:12px;padding:20px 14px;margin:25px 0;box-shadow:0 5px 20px rgba(0,0,0,.04)}
-.cal-h{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:var(--primary);margin-bottom:12px}
-.cal-g{display:grid;grid-template-columns:repeat(7,1fr);gap:6px 0;text-align:center}
+.cal{background:#fff;border:1px solid var(--gold-light);border-radius:12px;padding:22px 14px;margin:25px 0;box-shadow:0 5px 20px rgba(0,0,0,.04)}
+.cal-h{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:var(--primary);margin-bottom:14px}
+.cal-g{display:grid;grid-template-columns:repeat(7,1fr);gap:8px 0;text-align:center;align-items:center}
 .cal-g b{font-size:12px;font-weight:500;color:#999;padding-bottom:6px}
-.cal-g span{width:38px;height:38px;margin:0 auto;display:flex;align-items:center;justify-content:center;font:600 17px 'Cormorant Garamond',serif;color:#444;position:relative}
+.cal-g span{width:36px;height:36px;margin:0 auto;display:flex;align-items:center;justify-content:center;font:600 16px 'Cormorant Garamond',serif;color:#444;position:relative}
 
-/* Округление 13 числа сердечком */
-.cal-g span.heart-day{
-  color: #fff;
+/* Идеальное сердце для 13 числа */
+.cal-g span.heart-day {
+  color: #fff !important;
   font-weight: 700;
+  font-size: 15px;
   z-index: 1;
 }
 .cal-g span.heart-day::before {
@@ -100,17 +112,38 @@ input[type=text]:focus,textarea:focus{border-color:var(--primary)}
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  width: 32px;
-  height: 32px;
+  width: 34px;
+  height: 34px;
   background: var(--primary);
-  clip-path: path('M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z');
+  transform: translate(-50%, -50%) rotate(-45deg);
+  border-radius: 4px;
   z-index: -1;
-  transform-origin: center;
-  scale: 1.35;
+  box-shadow: 0 4px 10px rgba(197, 160, 89, 0.4);
+}
+.cal-g span.heart-day::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 34px;
+  height: 34px;
+  z-index: -1;
 }
 
-.cal p{margin:14px 0 0;font-size:14px}
+/* Изгибы сердечка */
+.cal-g span.heart-day::before {
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.cal-g span.heart-day {
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23c5a059'%3E%3Cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E") center/contain no-repeat;
+  color: #fff !important;
+  font-weight: 700;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.cal p{margin:16px 0 0;font-size:15px;font-weight:500;color:var(--primary-dark)}
 
 /* Появление блоков при прокрутке */
 .rv{opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s ease}
@@ -127,12 +160,9 @@ input[type=text]:focus,textarea:focus{border-color:var(--primary)}
 <button type="button" class="music" id="musicBtn" aria-label="Музыка">♪</button>
 
 <header class="hero" id="hero">
-  <div class="pre" data-ru="От всего сердца приглашаем вас на нашу свадьбу" data-kz="Сіздерді шаңырақ көтеру тойымызға шын жүректен шақырамыз">От всего сердца приглашаем вас на нашу свадьбу</div>
-  <div class="name n1">Мирас</div>
-  <div class="name n2">Эльмира</div>
-  <div class="date-box">
-    <div class="date" data-ru="13 декабря 2026" data-kz="13 желтоқсан 2026">13 декабря 2026</div>
-  </div>
+  <div class="monogram">М <span>&</span> Э</div>
+  <div class="full-names">Мирас & Эльмира</div>
+  <div class="date-dots">13 . 12 . 2026</div>
   <div class="scroll-t" data-ru="Вниз" data-kz="Төмен түсіңіз">Вниз</div>
   <div class="scroll"></div>
 </header>
@@ -142,7 +172,14 @@ input[type=text]:focus,textarea:focus{border-color:var(--primary)}
 <div class="wrap">
 <div class="container">
   <section class="rv">
-    <p style="line-height:1.8" data-ru="Дорогие родные, друзья и близкие! Совсем скоро состоится один из самых важных и особенных дней в нашей жизни, и мы хотим разделить эту радость с вами!" data-kz="Құрметті ағайын-туыс, бауырлар, нағашы-жиен, бөлелер, құда-жекжат, дос-жарандар, әріптестер мен көршілер!">Дорогие родные, друзья и близкие! Совсем скоро состоится один из самых важных и особенных дней в нашей жизни, и мы хотим разделить эту радость с вами!</p>
+    <div class="invite-block">
+      <p class="invite-pre" data-ru="Дорогие родные, друзья и близкие! Совсем скоро состоится один из самых важных и особенных дней в нашей жизни, и мы хотим разделить эту радость с вами!" data-kz="Құрметті ағайын-туыс, бауырлар, нағашы-жиен, бөлелер, құда-жекжат, дос-жарандар, әріптестер мен көршілер!">Дорогие родные, друзья и близкие! Совсем скоро состоится один из самых важных и особенных дней в нашей жизни, и мы хотим разделить эту радость с вами!</p>
+      
+      <div class="invite-you" data-ru="ПРИГЛАШАЕМ ВАС" data-kz="СІЗДЕРДІ">ПРИГЛАШАЕМ ВАС</div>
+      <div class="invite-couple">Мирас & Эльмира</div>
+      <div class="invite-post" data-ru="НА НАШУ СВАДЬБУ ОТ ВСЕГО СЕРДЦА!" data-kz="ШАҢЫРАҚ КӨТЕРУ ТОЙЫНА ШЫН ЖҮРЕКТЕН ШАҚЫРАМЫЗ!">НА НАШУ СВАДЬБУ ОТ ВСЕГО СЕРДЦА!</div>
+    </div>
+
     <div class="divider"></div>
     <p style="font-weight:500;text-transform:uppercase;font-size:13px;letter-spacing:2px;color:#777;margin-bottom:6px" data-ru="Той иелери:" data-kz="Той иелері:">Той иелери:</p>
     <div class="role" data-ru="Бабушка и дедушка" data-kz="Әже мен ата">Бабушка и дедушка</div>
@@ -165,7 +202,7 @@ input[type=text]:focus,textarea:focus{border-color:var(--primary)}
       <div class="program-item"><div class="program-time">18:00</div><div class="program-details"><h4 data-ru="Свадебный банкет" data-kz="Үйлену тойы">Свадебный банкет</h4><p data-ru="Праздничный вечер, поздравления и торжество" data-kz="Мерекелік кеш, құттықтаулар мен той думан">Праздничный вечер, поздравления и торжество</p></div></div>
       <div class="program-item"><div class="program-time">19:30</div><div class="program-details"><h4 data-ru="Развлекательная программа" data-kz="Ойын-сауық бағдарламасы">Развлекательная программа</h4><p data-ru="Танцы, музыка и праздничное настроение" data-kz="Би кеші, музыка және көңілді көңіл-күй">Танцы, музыка и праздничное настроение</p></div></div>
     </div>
-    <p class="lbl" data-ru="До торжества:" data-kz="Тойға дейін">До торжества:</p>
+    <p class="lbl" data-ru="До торжества:" data-kz="Тойға дейін">Тойға дейін:</p>
     <div class="countdown">
       <div class="time-box"><span id="days">00</span><label data-ru="Дней" data-kz="Күн">Дней</label></div>
       <div class="time-box"><span id="hours">00</span><label data-ru="Часов" data-kz="Сағат">Часов</label></div>
@@ -253,7 +290,7 @@ function showSuccess(){
   document.getElementById('successMsg').style.display='block';
 }
 
-// Календарь декабря 2026 (неделя с понедельника), 13-е выделено сердечком
+// Календарь декабря 2026 (неделя с понедельника), 13-е выделено ровным сердечком
 (function(){
   const g=document.getElementById('cal');
   const off=(new Date(2026,11,1).getDay()+6)%7;
