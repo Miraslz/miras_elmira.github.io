@@ -34,7 +34,6 @@ background:linear-gradient(rgba(20,14,6,.5),rgba(20,14,6,.68)),url('IMG_7808.jpe
 .scroll::after{content:"";position:absolute;top:7px;left:50%;width:4px;height:8px;margin-left:-2px;border-radius:2px;background:var(--primary);animation:dot 1.8s infinite}
 @keyframes dot{0%{opacity:0;transform:translateY(0)}30%{opacity:1}100%{opacity:0;transform:translateY(14px)}}
 
-/* Единственная анимация входа: имена появляются по очереди */
 .hero .pre,.hero .name,.hero .and,.hero .post,.hero .date{opacity:0;transform:translateY(18px);animation:in 1s ease forwards}
 .hero .pre{animation-delay:.2s}.hero .n1{animation-delay:.6s}.hero .and{animation-delay:1s}.hero .n2{animation-delay:1.3s}.hero .post{animation-delay:1.8s}.hero .date{animation-delay:2.2s}
 @keyframes in{to{opacity:1;transform:none}}
@@ -85,7 +84,6 @@ input[type=text]:focus,textarea:focus{border-color:var(--primary)}
 .finale .band{height:44px;margin:18px auto;max-width:300px;background:url('orn-c-h-dark.svg') center/contain no-repeat}
 .finale .fd{font-family:'Cormorant Garamond',serif;font-size:26px;letter-spacing:5px;color:#6e4f17}
 
-/* Появление блоков при прокрутке */
 .rv{opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s ease}
 .rv.show{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.petal{display:none}.rv{opacity:1;transform:none;transition:none}.hero *{animation-duration:.01s!important;animation-delay:0s!important}}
@@ -102,7 +100,7 @@ input[type=text]:focus,textarea:focus{border-color:var(--primary)}
 <header class="hero" id="hero">
   <div class="pre" data-ru="Приглашаем вас от всего сердца" data-kz="Сізді шын жүректен">Приглашаем вас от всего сердца</div>
   <div class="name n1">Мирас</div>
-  <div class="and" data-ru="и" data-kz="пен">и</div>
+  <div class="and" id="heroAnd" data-ru="и" data-kz="пен">и</div>
   <div class="name n2">Эльмира</div>
   <div class="post" data-ru="на нашу свадьбу!" data-kz="үйлену тойына шақырамыз!">на нашу свадьбу!</div>
   <div class="date" data-ru="13 декабря 2026" data-kz="13 желтоқсан 2026">13 декабря 2026</div>
@@ -146,8 +144,10 @@ input[type=text]:focus,textarea:focus{border-color:var(--primary)}
   <section class="rv">
     <h2 class="t" data-ru="Подтверждение присутствия" data-kz="Қатысуды растау">Подтверждение присутствия</h2>
     <p data-ru="Пожалуйста, подтвердите ваше участие до 1 декабря 2026 г." data-kz="Қатысуыңызды 2026 жылдың 1 желтоқсанына дейін растауыңызды сұраймыз.">Пожалуйста, подтвердите ваше участие до 1 декабря 2026 г.</p>
+    
     <iframe name="hidden_iframe" id="hidden_iframe" style="display:none" onload="if(submitted){showSuccess();}"></iframe>
-    <form id="rsvpForm" action="https://script.google.com/macros/s/AKfycbz9fUMRZbx3AH0_aolTMKstSjLqJinpe4nyV-orqvVmlXHQNqG3wyY6sZy2Ppq3wM79/exec" method="POST" target="hidden_iframe" onsubmit="submitted=true;prep();">
+    
+    <form id="rsvpForm" action="https://script.google.com/macros/s/AKfycbz9fUMRZbx3AH0_aolTMKstSjLqJinpe4nyV-orqvVmlXHQNqG3wyY6sZy2Ppq3wM79/exec" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
       <div class="form-group">
         <label class="form-label" data-ru="Ваше имя и фамилия" data-kz="Аты-жөніңіз">Ваше имя и фамилия</label>
         <input type="text" name="name" required placeholder="Введите ваше имя...">
@@ -156,7 +156,7 @@ input[type=text]:focus,textarea:focus{border-color:var(--primary)}
         <label class="form-label" data-ru="Сможете ли вы присутствовать?" data-kz="Тойға қатыса аласыз ба?">Сможете ли вы присутствовать?</label>
         <div class="radio-group">
           <label class="radio-label"><input type="radio" name="status" value="Присутствует / Қатысады" checked><span data-ru="Буду(-ем) с радостью" data-kz="Міндетті түрде келемін">Буду(-ем) с радостью</span></label>
-          <label class="radio-label"><input type="radio" name="status" value="Присутствует / Қатысады" data-plus="1"><span data-ru="Буду с женой / девушкой" data-kz="Жұбайыммен / сүйіктіммен келемін">Буду с женой / девушкой</span></label>
+          <label class="radio-label"><input type="radio" name="status" value="Присутствует с женой/девушкой"><span data-ru="Буду с женой / девушкой" data-kz="Жұбайыммен / сүйіктіммен келемін">Буду с женой / девушкой</span></label>
           <label class="radio-label"><input type="radio" name="status" value="Не сможет / Қатыса алмайды"><span data-ru="К сожалению, не смогу" data-kz="Өкінішке орай, келе алмаймын">К сожалению, не смогу</span></label>
         </div>
       </div>
@@ -180,80 +180,88 @@ input[type=text]:focus,textarea:focus{border-color:var(--primary)}
 </footer>
 
 <script>
-let submitted=false;
+let submitted = false;
 
-// Язык
+// Переключение языка
 function setLang(lang){
-  const b=document.querySelectorAll('.lang-btn');
-  b.forEach(x=>x.classList.remove('active'));
+  const b = document.querySelectorAll('.lang-btn');
+  b.forEach(x => x.classList.remove('active'));
   b[lang==='ru'?0:1].classList.add('active');
-  document.documentElement.lang=lang==='ru'?'ru':'kk';
-  document.querySelectorAll('[data-ru]').forEach(el=>{const t=el.getAttribute('data-'+lang);if(t)el.textContent=t;});
+  document.documentElement.lang = lang==='ru'?'ru':'kk';
+  document.querySelectorAll('[data-ru]').forEach(el => {
+    const t = el.getAttribute('data-' + lang);
+    if(t) el.textContent = t;
+  });
 }
 
-// Таймер до Беташара
-const weddingDate=new Date('2026-12-13T17:00:00');
+// Таймер
+const weddingDate = new Date('2026-12-13T17:00:00');
 function updateCountdown(){
-  const diff=weddingDate-new Date();
-  if(diff<=0)return;
-  const set=(id,v)=>document.getElementById(id).textContent=String(v).padStart(2,'0');
-  set('days',Math.floor(diff/864e5));
-  set('hours',Math.floor(diff/36e5)%24);
-  set('minutes',Math.floor(diff/6e4)%60);
-  set('seconds',Math.floor(diff/1e3)%60);
+  const diff = weddingDate - new Date();
+  if(diff <= 0) return;
+  const set = (id, v) => document.getElementById(id).textContent = String(v).padStart(2, '0');
+  set('days', Math.floor(diff / 864e5));
+  set('hours', Math.floor(diff / 36e5) % 24);
+  set('minutes', Math.floor(diff / 6e4) % 60);
+  set('seconds', Math.floor(diff / 1e3) % 60);
 }
-setInterval(updateCountdown,1000);updateCountdown();
+setInterval(updateCountdown, 1000);
+updateCountdown();
 
-// "С женой/девушкой" уходит в таблицу как "Присутствует", а пометка добавляется к пожеланию
-function prep(){
-  const f=document.getElementById('rsvpForm');
-  const plus=f.querySelector('input[data-plus]');
-  const ta=f.querySelector('textarea');
-  if(plus&&plus.checked&&!ta.dataset.done){ta.value='(с женой/девушкой) '+ta.value;ta.dataset.done='1';}
-}
+// Сообщение после отправки
 function showSuccess(){
-  document.getElementById('rsvpForm').style.display='none';
-  document.getElementById('successMsg').style.display='block';
+  document.getElementById('rsvpForm').style.display = 'none';
+  document.getElementById('successMsg').style.display = 'block';
 }
 
-// Золотые лепестки в шапке
+// Лепестки
 (function(){
-  const hero=document.getElementById('hero');
-  for(let i=0;i<16;i++){
-    const p=document.createElement('span');
-    p.className='petal';
-    p.style.left=Math.random()*100+'%';
-    p.style.setProperty('--dx',(Math.random()*120-60)+'px');
-    p.style.animationDuration=(7+Math.random()*7)+'s';
-    p.style.animationDelay=(-Math.random()*12)+'s';
-    p.style.transform='scale('+(.6+Math.random()*.9)+')';
+  const hero = document.getElementById('hero');
+  for(let i=0; i<16; i++){
+    const p = document.createElement('span');
+    p.className = 'petal';
+    p.style.left = Math.random()*100 + '%';
+    p.style.setProperty('--dx', (Math.random()*120-60) + 'px');
+    p.style.animationDuration = (7 + Math.random()*7) + 's';
+    p.style.animationDelay = (-Math.random()*12) + 's';
+    p.style.transform = 'scale(' + (.6 + Math.random()*.9) + ')';
     hero.appendChild(p);
   }
 })();
 
-// Плавное появление блоков
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target);}}),{threshold:.15});
-document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+// Анимация блоков при прокрутке
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if(e.isIntersecting){
+    e.target.classList.add('show');
+    io.unobserve(e.target);
+  }
+}), {threshold: 0.15});
+document.querySelectorAll('.rv').forEach(el => io.observe(el));
 
-// Музыка: файл music.mp3 лежит рядом с index.html. Первое касание запускает песню, кнопка ♪ — пауза/play
+// Плеер музыки
 (function(){
-  const btn=document.getElementById('musicBtn');
-  btn.style.display='block';
-  const a=new Audio('music.mp3');
-  a.loop=true;a.preload='auto';
-  a.addEventListener('play',()=>btn.classList.add('on'));
-  a.addEventListener('pause',()=>btn.classList.remove('on'));
-  function stopAuto(){document.removeEventListener('touchend',first);document.removeEventListener('click',first);}
+  const btn = document.getElementById('musicBtn');
+  btn.style.display = 'block';
+  const a = new Audio('music.mp3');
+  a.loop = true;
+  a.preload = 'auto';
+  a.addEventListener('play', () => btn.classList.add('on'));
+  a.addEventListener('pause', () => btn.classList.remove('on'));
+  
+  function stopAuto(){
+    document.removeEventListener('touchend', first);
+    document.removeEventListener('click', first);
+  }
   function first(e){
-    if(e.target.closest&&e.target.closest('#musicBtn'))return;
+    if(e.target.closest && e.target.closest('#musicBtn')) return;
     a.play().catch(()=>{});
     stopAuto();
   }
-  document.addEventListener('touchend',first);
-  document.addEventListener('click',first);
-  btn.addEventListener('click',()=>{
+  document.addEventListener('touchend', first);
+  document.addEventListener('click', first);
+  btn.addEventListener('click', () => {
     stopAuto();
-    if(a.paused)a.play().catch(()=>{});else a.pause();
+    if(a.paused) a.play().catch(()=>{}); else a.pause();
   });
 })();
 </script>
