@@ -22,37 +22,33 @@ body{background-color:var(--bg);color:var(--text);font-family:'Montserrat',sans-
 @keyframes spin{to{transform:rotate(360deg)}}
 
 /* HERO */
-.hero{position:relative;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#fff;padding:90px 24px 70px;overflow:hidden;
-background:linear-gradient(rgba(20,14,6,.5),rgba(20,14,6,.68)),url('IMG_7808.jpeg') center 65%/cover no-repeat}
+.hero{position:relative;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#fff;padding:80px 24px 90px;overflow:hidden;
+background:linear-gradient(rgba(20,14,6,.55),rgba(20,14,6,.7)),url('IMG_7808.jpeg') center 65%/cover no-repeat}
 .hero>*{position:relative;z-index:2}
-.hero .pre{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;color:var(--gold-light)}
+.hero .pre{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:24px;color:var(--gold-light);margin-bottom:12px}
 .hero .name{font-family:'Great Vibes',cursive;font-size:clamp(64px,19vw,110px);line-height:1.05;color:#fff;text-shadow:0 3px 20px rgba(0,0,0,.5)}
-.hero .and{font-family:'Great Vibes',cursive;font-size:38px;color:var(--primary);margin:-4px 0}
-.hero .post{font-size:17px;margin-top:14px;font-weight:400;letter-spacing:1px}
-.hero .date{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:600;color:var(--gold-light);margin-top:26px;padding-top:18px;border-top:1px solid var(--primary);min-width:230px}
-.scroll{position:absolute;bottom:22px;left:50%;width:26px;height:42px;margin-left:-13px;border:2px solid rgba(255,255,255,.7);border-radius:14px;z-index:2}
-.scroll::after{content:"";position:absolute;top:7px;left:50%;width:4px;height:8px;margin-left:-2px;border-radius:2px;background:var(--primary);animation:dot 1.8s infinite}
-@keyframes dot{0%{opacity:0;transform:translateY(0)}30%{opacity:1}100%{opacity:0;transform:translateY(14px)}}
+.hero .date-box{margin-top:35px;padding-top:18px;border-top:1px solid var(--primary);min-width:240px}
+.hero .date{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:600;color:var(--gold-light)}
+.scroll-t{position:absolute;bottom:55px;left:0;right:0;text-align:center;font-size:12px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.85);z-index:2;opacity:0;animation:in 1s ease 2.2s forwards}
+.scroll{position:absolute;bottom:15px;left:50%;width:24px;height:36px;margin-left:-12px;border:2px solid rgba(255,255,255,.7);border-radius:12px;z-index:2}
+.scroll::after{content:"";position:absolute;top:6px;left:50%;width:4px;height:7px;margin-left:-2px;border-radius:2px;background:var(--primary);animation:dot 1.8s infinite}
+@keyframes dot{0%{opacity:0;transform:translateY(0)}30%{opacity:1}100%{opacity:0;transform:translateY(12px)}}
 
-.hero .pre,.hero .name,.hero .and,.hero .post,.hero .date{opacity:0;transform:translateY(18px);animation:in 1s ease forwards}
-.hero .pre{animation-delay:.2s}.hero .n1{animation-delay:.6s}.hero .and{animation-delay:1s}.hero .n2{animation-delay:1.3s}.hero .post{animation-delay:1.8s}.hero .date{animation-delay:2.2s}
+/* Анимация входа */
+.hero .pre,.hero .name,.hero .date-box{opacity:0;transform:translateY(18px);animation:in 1s ease forwards}
+.hero .pre{animation-delay:.2s}.hero .n1{animation-delay:.6s}.hero .n2{animation-delay:1.1s}.hero .date-box{animation-delay:1.6s}
 @keyframes in{to{opacity:1;transform:none}}
 
-/* Лепестки */
-.petal{position:absolute;top:-20px;z-index:1;width:10px;height:14px;background:radial-gradient(circle at 30% 30%,#f4ebd0,var(--primary));border-radius:80% 0 80% 0;opacity:.8;animation:fall linear infinite}
-@keyframes fall{to{transform:translate(var(--dx),110vh) rotate(540deg)}}
-
 /* Контент */
-.container{max-width:600px;margin:0 auto;padding:10px 40px 40px;text-align:center}
+.container{max-width:600px;margin:0 auto;padding:10px 30px 40px;text-align:center}
 .wrap{position:relative}
-.wrap::before,.wrap::after{content:"";position:absolute;top:0;bottom:0;width:26px;background:url('orn-b.svg') center top/26px auto repeat-y;pointer-events:none}
-.wrap::before{left:6px}.wrap::after{right:6px}
 section{padding:44px 0 6px}
-section:not(:last-of-type)::after{content:"";display:block;height:26px;width:80%;margin:40px auto 0;background:url('orn-a-h.svg') center/auto 26px repeat-x}
+section:not(:last-of-type)::after{content:"";display:block;height:1px;width:60%;margin:40px auto 0;background:var(--gold-light)}
 section:last-of-type{padding-bottom:30px}
 p{font-size:16px;color:#555;margin-bottom:20px;font-weight:300}
 h2.t{font-family:'Cormorant Garamond',serif;font-size:30px;color:var(--primary);margin-bottom:14px}
 .hosts-text{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:var(--primary);letter-spacing:1px;margin:10px 0}
+.lbl{font-weight:500;text-transform:uppercase;font-size:13px;letter-spacing:2px;color:#777;margin-bottom:8px}
 .role{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;color:#777;margin:16px 0 0}
 .hosts-text.big{font-size:32px}
 .divider{width:1px;height:40px;background:var(--primary);margin:25px auto}
@@ -76,17 +72,50 @@ input[type=text]:focus,textarea:focus{border-color:var(--primary)}
 .radio-group{display:flex;flex-direction:column;gap:12px;margin-top:8px}
 .radio-label{display:flex;align-items:center;gap:10px;font-size:14px;cursor:pointer}
 .success-msg{display:none;background:#eafaf1;color:#27ae60;padding:20px;border-radius:8px;text-align:center;font-weight:500;margin-top:15px;border:1px solid #a3e4d7}
-.finale{position:relative;text-align:center;padding:100px 24px 90px;background:radial-gradient(ellipse at 50% 0%,rgba(255,255,255,.6),transparent 65%),linear-gradient(180deg,#f4e6b8,#e6d097);border-top:3px solid var(--primary)}
-.finale::before{content:"";position:absolute;inset:14px;border:1px solid rgba(138,106,43,.7);outline:1px solid rgba(138,106,43,.3);outline-offset:5px;pointer-events:none}
-.finale .edge{position:absolute;left:24px;right:24px;height:22px;background:url('orn-a-h-dark.svg') center/auto 22px repeat-x}
-.finale .edge.t{top:26px}.finale .edge.b{bottom:26px}
+.finale{position:relative;text-align:center;padding:70px 24px 60px;background:radial-gradient(ellipse at 50% 0%,rgba(255,255,255,.6),transparent 65%),linear-gradient(180deg,#f4e6b8,#e6d097);border-top:3px solid var(--primary)}
 .finale .fn{font-family:'Great Vibes',cursive;font-size:clamp(46px,13vw,72px);line-height:1.15;background:linear-gradient(180deg,#a8842f,#6e4f17);-webkit-background-clip:text;background-clip:text;color:transparent}
-.finale .band{height:44px;margin:18px auto;max-width:300px;background:url('orn-c-h-dark.svg') center/contain no-repeat}
-.finale .fd{font-family:'Cormorant Garamond',serif;font-size:26px;letter-spacing:5px;color:#6e4f17}
+.finale .fd{font-family:'Cormorant Garamond',serif;font-size:24px;letter-spacing:4px;color:#6e4f17;margin-top:15px}
 
+/* Бегущая строка */
+.marquee{overflow:hidden;background:var(--primary);color:#fff;padding:9px 0;white-space:nowrap}
+.mq{display:inline-flex;animation:mq 40s linear infinite}
+.mq span{font:italic 600 20px 'Cormorant Garamond',serif;letter-spacing:2px}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* Календарь */
+.cal{background:#fff;border:1px solid var(--gold-light);border-radius:12px;padding:20px 14px;margin:25px 0;box-shadow:0 5px 20px rgba(0,0,0,.04)}
+.cal-h{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:var(--primary);margin-bottom:12px}
+.cal-g{display:grid;grid-template-columns:repeat(7,1fr);gap:6px 0;text-align:center}
+.cal-g b{font-size:12px;font-weight:500;color:#999;padding-bottom:6px}
+.cal-g span{width:38px;height:38px;margin:0 auto;display:flex;align-items:center;justify-content:center;font:600 17px 'Cormorant Garamond',serif;color:#444;position:relative}
+
+/* Округление 13 числа сердечком */
+.cal-g span.heart-day{
+  color: #fff;
+  font-weight: 700;
+  z-index: 1;
+}
+.cal-g span.heart-day::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 32px;
+  height: 32px;
+  background: var(--primary);
+  clip-path: path('M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z');
+  z-index: -1;
+  transform-origin: center;
+  scale: 1.35;
+}
+
+.cal p{margin:14px 0 0;font-size:14px}
+
+/* Появление блоков при прокрутке */
 .rv{opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s ease}
 .rv.show{opacity:1;transform:none}
-@media (prefers-reduced-motion:reduce){.petal{display:none}.rv{opacity:1;transform:none;transition:none}.hero *{animation-duration:.01s!important;animation-delay:0s!important}}
+@media (prefers-reduced-motion:reduce){.mq{animation:none}.rv{opacity:1;transform:none;transition:none}.hero *{animation-duration:.01s!important;animation-delay:0s!important}}
 </style>
 </head>
 <body>
@@ -98,19 +127,22 @@ input[type=text]:focus,textarea:focus{border-color:var(--primary)}
 <button type="button" class="music" id="musicBtn" aria-label="Музыка">♪</button>
 
 <header class="hero" id="hero">
-  <div class="pre" data-ru="Приглашаем вас от всего сердца" data-kz="Сізді шын жүректен">Приглашаем вас от всего сердца</div>
+  <div class="pre" data-ru="От всего сердца приглашаем вас на нашу свадьбу" data-kz="Сіздерді шаңырақ көтеру тойымызға шын жүректен шақырамыз">От всего сердца приглашаем вас на нашу свадьбу</div>
   <div class="name n1">Мирас</div>
-  <div class="and" id="heroAnd" data-ru="и" data-kz="пен">и</div>
   <div class="name n2">Эльмира</div>
-  <div class="post" data-ru="на нашу свадьбу!" data-kz="үйлену тойына шақырамыз!">на нашу свадьбу!</div>
-  <div class="date" data-ru="13 декабря 2026" data-kz="13 желтоқсан 2026">13 декабря 2026</div>
+  <div class="date-box">
+    <div class="date" data-ru="13 декабря 2026" data-kz="13 желтоқсан 2026">13 декабря 2026</div>
+  </div>
+  <div class="scroll-t" data-ru="Вниз" data-kz="Төмен түсіңіз">Вниз</div>
   <div class="scroll"></div>
 </header>
+
+<div class="marquee" aria-hidden="true"><div class="mq"><span></span><span></span></div></div>
 
 <div class="wrap">
 <div class="container">
   <section class="rv">
-    <p style="line-height:1.8" data-ru="Дорогие родные, друзья и близкие! Совсем скоро состоится один из самых важных и особенных дней в нашей жизни, и мы хотим разделить эту радость с вами!" data-kz="Біздің өміріміздегі ең маңызды және ерекше күндердің бірі жақындап келеді, және осы қуанышымызды Сізбен бөліскіміз келеді!">Дорогие родные, друзья и близкие! Совсем скоро состоится один из самых важных и особенных дней в нашей жизни, и мы хотим разделить эту радость с вами!</p>
+    <p style="line-height:1.8" data-ru="Дорогие родные, друзья и близкие! Совсем скоро состоится один из самых важных и особенных дней в нашей жизни, и мы хотим разделить эту радость с вами!" data-kz="Құрметті ағайын-туыс, бауырлар, нағашы-жиен, бөлелер, құда-жекжат, дос-жарандар, әріптестер мен көршілер!">Дорогие родные, друзья и близкие! Совсем скоро состоится один из самых важных и особенных дней в нашей жизни, и мы хотим разделить эту радость с вами!</p>
     <div class="divider"></div>
     <p style="font-weight:500;text-transform:uppercase;font-size:13px;letter-spacing:2px;color:#777;margin-bottom:6px" data-ru="Той иелери:" data-kz="Той иелері:">Той иелери:</p>
     <div class="role" data-ru="Бабушка и дедушка" data-kz="Әже мен ата">Бабушка и дедушка</div>
@@ -120,12 +152,20 @@ input[type=text]:focus,textarea:focus{border-color:var(--primary)}
   </section>
 
   <section class="rv">
+    <p class="lbl" data-ru="Дата торжества:" data-kz="Той салтанаты:">Дата торжества:</p>
     <h2 class="t" data-ru="13 декабря 2026" data-kz="13 желтоқсан 2026">13 декабря 2026</h2>
+    <div class="cal">
+      <div class="cal-h" data-ru="Декабрь 2026" data-kz="Желтоқсан 2026">Декабрь 2026</div>
+      <div class="cal-g" id="cal"><b data-ru="Пн" data-kz="Дс">Пн</b><b data-ru="Вт" data-kz="Сс">Вт</b><b data-ru="Ср" data-kz="Ср">Ср</b><b data-ru="Чт" data-kz="Бс">Чт</b><b data-ru="Пт" data-kz="Жм">Пт</b><b data-ru="Сб" data-kz="Сн">Сб</b><b data-ru="Вс" data-kz="Жс">Вс</b></div>
+      <p data-ru="Начало в 17:00" data-kz="Сағат 17:00-де басталады">Начало в 17:00</p>
+    </div>
+    <p class="lbl" data-ru="Программа торжества:" data-kz="Тойдың бағдарламасы:">Программа торжества:</p>
     <div class="program-box">
       <div class="program-item"><div class="program-time">17:00</div><div class="program-details"><h4 data-ru="Беташар" data-kz="Беташар">Беташар</h4><p data-ru="Традиционный обряд знакомства невесты с родными" data-kz="Қалыңдықты туыстармен таныстыру дәстүрі">Традиционный обряд знакомства невесты с родными</p></div></div>
       <div class="program-item"><div class="program-time">18:00</div><div class="program-details"><h4 data-ru="Свадебный банкет" data-kz="Үйлену тойы">Свадебный банкет</h4><p data-ru="Праздничный вечер, поздравления и торжество" data-kz="Мерекелік кеш, құттықтаулар мен той думан">Праздничный вечер, поздравления и торжество</p></div></div>
       <div class="program-item"><div class="program-time">19:30</div><div class="program-details"><h4 data-ru="Развлекательная программа" data-kz="Ойын-сауық бағдарламасы">Развлекательная программа</h4><p data-ru="Танцы, музыка и праздничное настроение" data-kz="Би кеші, музыка және көңілді көңіл-күй">Танцы, музыка и праздничное настроение</p></div></div>
     </div>
+    <p class="lbl" data-ru="До торжества:" data-kz="Тойға дейін">До торжества:</p>
     <div class="countdown">
       <div class="time-box"><span id="days">00</span><label data-ru="Дней" data-kz="Күн">Дней</label></div>
       <div class="time-box"><span id="hours">00</span><label data-ru="Часов" data-kz="Сағат">Часов</label></div>
@@ -135,34 +175,32 @@ input[type=text]:focus,textarea:focus{border-color:var(--primary)}
   </section>
 
   <section class="rv">
-    <h2 class="t" data-ru="Место проведения" data-kz="Өтетін орны">Место проведения</h2>
-    <p style="font-size:20px;font-weight:600;color:#222;margin-bottom:5px">Ресторан «Шахназ»</p>
+    <h2 class="t" data-ru="Место проведения" data-kz="Мекен-жай">Место проведения</h2>
+    <p style="font-size:20px;font-weight:600;color:#222;margin-bottom:5px" data-ru="Ресторан «Шахназ»" data-kz="«Шахназ» мейрамханасы">Ресторан «Шахназ»</p>
     <p data-ru="г. Актау" data-kz="Ақтау қаласы">г. Актау</p>
     <a href="https://2gis.kz/aktau/geo/70000001092077313?inv_by=724627c74aab4fc6924e4efde3dad254&inv_ts=1793783729" target="_blank" rel="noopener" class="btn" data-ru="Открыть в 2GIS" data-kz="2GIS-те ашу">Открыть в 2GIS</a>
   </section>
 
   <section class="rv">
-    <h2 class="t" data-ru="Подтверждение присутствия" data-kz="Қатысуды растау">Подтверждение присутствия</h2>
-    <p data-ru="Пожалуйста, подтвердите ваше участие до 1 декабря 2026 г." data-kz="Қатысуыңызды 2026 жылдың 1 желтоқсанына дейін растауыңызды сұраймыз.">Пожалуйста, подтвердите ваше участие до 1 декабря 2026 г.</p>
-    
+    <h2 class="t" data-ru="Подтверждение присутствия" data-kz="Анкета">Подтверждение присутствия</h2>
+    <p data-ru="Пожалуйста, подтвердите ваше участие до 1 декабря 2026 г." data-kz="Тойға келуіңізді растауыңызды сұраймыз! 2026 жылдың 1 желтоқсанына дейін.">Пожалуйста, подтвердите ваше участие до 1 декабря 2026 г.</p>
     <iframe name="hidden_iframe" id="hidden_iframe" style="display:none" onload="if(submitted){showSuccess();}"></iframe>
-    
-    <form id="rsvpForm" action="https://script.google.com/macros/s/AKfycbz4yXDVkbesvNs1Yk-_RLmwHgrPpBhFAtL-L8PO-_LnYtR0RWzk3UuvkQLFBV6BZmk2/exec" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
+    <form id="rsvpForm" action="https://script.google.com/macros/s/AKfycbz4yXDVkbesvNs1Yk-_RLmwHgrPpBhFAtL-L8PO-_LnYtR0RWzk3UuvkQLFBV6BZmk2/exec" method="POST" target="hidden_iframe" onsubmit="submitted=true;prep();">
       <div class="form-group">
         <label class="form-label" data-ru="Ваше имя и фамилия" data-kz="Аты-жөніңіз">Ваше имя и фамилия</label>
-        <input type="text" name="name" required placeholder="Введите ваше имя...">
+        <input type="text" name="name" required placeholder="Введите ваше имя..." data-ph-ru="Введите ваше имя..." data-ph-kz="Аты-жөніңізді жазыңыз...">
       </div>
       <div class="form-group">
-        <label class="form-label" data-ru="Сможете ли вы присутствовать?" data-kz="Тойға қатыса аласыз ба?">Сможете ли вы присутствовать?</label>
+        <label class="form-label" data-ru="Сможете ли вы присутствовать?" data-kz="Келесіз бе?">Сможете ли вы присутствовать?</label>
         <div class="radio-group">
-          <label class="radio-label"><input type="radio" name="status" value="Присутствует / Қатысады" checked><span data-ru="Буду(-ем) с радостью" data-kz="Міндетті түрде келемін">Буду(-ем) с радостью</span></label>
-          <label class="radio-label"><input type="radio" name="status" value="Присутствует с женой/девушкой"><span data-ru="Буду с женой / девушкой" data-kz="Жұбайыммен / сүйіктіммен келемін">Буду с женой / девушкой</span></label>
-          <label class="radio-label"><input type="radio" name="status" value="Не сможет / Қатыса алмайды"><span data-ru="К сожалению, не смогу" data-kz="Өкінішке орай, келе алмаймын">К сожалению, не смогу</span></label>
+          <label class="radio-label"><input type="radio" name="status" value="Присутствует / Қатысады" checked><span data-ru="Буду(-ем) с радостью" data-kz="Иә, әрине">Буду(-ем) с радостью</span></label>
+          <label class="radio-label"><input type="radio" name="status" value="Присутствует / Қатысады" data-plus="1"><span data-ru="Буду с женой / девушкой" data-kz="Жұбайыммен келемін">Буду с женой / девушкой</span></label>
+          <label class="radio-label"><input type="radio" name="status" value="Не сможет / Қатыса алмайды"><span data-ru="К сожалению, не смогу" data-kz="Келе алмаймын">К сожалению, не смогу</span></label>
         </div>
       </div>
       <div class="form-group">
         <label class="form-label" data-ru="Ваши пожелания молодоженам" data-kz="Жас жұбайларға тілегіңіз">Ваши пожелания молодоженам</label>
-        <textarea name="message" rows="3" placeholder="Ваше теплое слово..."></textarea>
+        <textarea name="message" rows="3" placeholder="Ваше теплое слово..." data-ph-ru="Ваше теплое слово..." data-ph-kz="Жылы тілегіңізді жазыңыз..."></textarea>
       </div>
       <button type="submit" class="btn" style="width:100%;cursor:pointer" data-ru="Отправить ответ" data-kz="Жіберу">Отправить ответ</button>
     </form>
@@ -173,95 +211,87 @@ input[type=text]:focus,textarea:focus{border-color:var(--primary)}
 </div>
 
 <footer class="finale">
-  <div class="edge t"></div><div class="edge b"></div>
   <div class="fn">Мирас & Эльмира</div>
-  <div class="band"></div>
   <div class="fd">13.12.2026</div>
 </footer>
 
 <script>
-let submitted = false;
+let submitted=false;
 
-// Переключение языка
+// Язык
 function setLang(lang){
-  const b = document.querySelectorAll('.lang-btn');
-  b.forEach(x => x.classList.remove('active'));
+  const b=document.querySelectorAll('.lang-btn');
+  b.forEach(x=>x.classList.remove('active'));
   b[lang==='ru'?0:1].classList.add('active');
-  document.documentElement.lang = lang==='ru'?'ru':'kk';
-  document.querySelectorAll('[data-ru]').forEach(el => {
-    const t = el.getAttribute('data-' + lang);
-    if(t) el.textContent = t;
-  });
+  document.documentElement.lang=lang==='ru'?'ru':'kk';
+  document.querySelectorAll('[data-ph-ru]').forEach(el=>{el.placeholder=el.getAttribute('data-ph-'+lang);});
+  document.querySelectorAll('[data-ru]').forEach(el=>{const t=el.getAttribute('data-'+lang);if(t)el.textContent=t;});
 }
 
-// Таймер
-const weddingDate = new Date('2026-12-13T17:00:00');
+// Таймер до Беташара
+const weddingDate=new Date('2026-12-13T17:00:00');
 function updateCountdown(){
-  const diff = weddingDate - new Date();
-  if(diff <= 0) return;
-  const set = (id, v) => document.getElementById(id).textContent = String(v).padStart(2, '0');
-  set('days', Math.floor(diff / 864e5));
-  set('hours', Math.floor(diff / 36e5) % 24);
-  set('minutes', Math.floor(diff / 6e4) % 60);
-  set('seconds', Math.floor(diff / 1e3) % 60);
+  const diff=weddingDate-new Date();
+  if(diff<=0)return;
+  const set=(id,v)=>document.getElementById(id).textContent=String(v).padStart(2,'0');
+  set('days',Math.floor(diff/864e5));
+  set('hours',Math.floor(diff/36e5)%24);
+  set('minutes',Math.floor(diff/6e4)%60);
+  set('seconds',Math.floor(diff/1e3)%60);
 }
-setInterval(updateCountdown, 1000);
-updateCountdown();
+setInterval(updateCountdown,1000);updateCountdown();
 
-// Сообщение после отправки
+// "С женой/девушкой" уходит в таблицу как "Присутствует", а пометка добавляется к пожеланию
+function prep(){
+  const f=document.getElementById('rsvpForm');
+  const plus=f.querySelector('input[data-plus]');
+  const ta=f.querySelector('textarea');
+  if(plus&&plus.checked&&!ta.dataset.done){ta.value='(с женой/девушкой) '+ta.value;ta.dataset.done='1';}
+}
 function showSuccess(){
-  document.getElementById('rsvpForm').style.display = 'none';
-  document.getElementById('successMsg').style.display = 'block';
+  document.getElementById('rsvpForm').style.display='none';
+  document.getElementById('successMsg').style.display='block';
 }
 
-// Лепестки
+// Календарь декабря 2026 (неделя с понедельника), 13-е выделено сердечком
 (function(){
-  const hero = document.getElementById('hero');
-  for(let i=0; i<16; i++){
-    const p = document.createElement('span');
-    p.className = 'petal';
-    p.style.left = Math.random()*100 + '%';
-    p.style.setProperty('--dx', (Math.random()*120-60) + 'px');
-    p.style.animationDuration = (7 + Math.random()*7) + 's';
-    p.style.animationDelay = (-Math.random()*12) + 's';
-    p.style.transform = 'scale(' + (.6 + Math.random()*.9) + ')';
-    hero.appendChild(p);
+  const g=document.getElementById('cal');
+  const off=(new Date(2026,11,1).getDay()+6)%7;
+  for(let i=0;i<off;i++)g.appendChild(document.createElement('i'));
+  for(let d=1;d<=31;d++){
+    const c=document.createElement('span');
+    c.textContent=d;
+    if(d===13)c.className='heart-day';
+    g.appendChild(c);
   }
 })();
 
-// Анимация блоков при прокрутке
-const io = new IntersectionObserver(es => es.forEach(e => {
-  if(e.isIntersecting){
-    e.target.classList.add('show');
-    io.unobserve(e.target);
-  }
-}), {threshold: 0.15});
-document.querySelectorAll('.rv').forEach(el => io.observe(el));
+// Бегущая строка
+document.querySelectorAll('.mq span').forEach(el=>{el.textContent='Мирас & Эльмира  ✦  13.12.2026  ✦  '.repeat(10);});
 
-// Плеер музыки
+// Плавное появление блоков
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target);}}),{threshold:.15});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+// Музыка
 (function(){
-  const btn = document.getElementById('musicBtn');
-  btn.style.display = 'block';
-  const a = new Audio('music.mp3');
-  a.loop = true;
-  a.preload = 'auto';
-  a.addEventListener('play', () => btn.classList.add('on'));
-  a.addEventListener('pause', () => btn.classList.remove('on'));
-  
-  function stopAuto(){
-    document.removeEventListener('touchend', first);
-    document.removeEventListener('click', first);
-  }
+  const btn=document.getElementById('musicBtn');
+  btn.style.display='block';
+  const a=new Audio('music.mp3');
+  a.loop=true;a.preload='auto';
+  a.addEventListener('play',()=>btn.classList.add('on'));
+  a.addEventListener('pause',()=>btn.classList.remove('on'));
+  function stopAuto(){document.removeEventListener('touchend',first);document.removeEventListener('click',first);}
   function first(e){
-    if(e.target.closest && e.target.closest('#musicBtn')) return;
+    if(e.target.closest&&e.target.closest('#musicBtn'))return;
     a.play().catch(()=>{});
     stopAuto();
   }
-  document.addEventListener('touchend', first);
-  document.addEventListener('click', first);
-  btn.addEventListener('click', () => {
+  document.addEventListener('touchend',first);
+  document.addEventListener('click',first);
+  btn.addEventListener('click',()=>{
     stopAuto();
-    if(a.paused) a.play().catch(()=>{}); else a.pause();
+    if(a.paused)a.play().catch(()=>{});else a.pause();
   });
 })();
 </script>
