@@ -147,7 +147,7 @@ input[type=text]:focus,textarea:focus{border-color:var(--primary)}
     <h2 class="t" data-ru="Подтверждение присутствия" data-kz="Қатысуды растау">Подтверждение присутствия</h2>
     <p data-ru="Пожалуйста, подтвердите ваше участие до 1 декабря 2026 г." data-kz="Қатысуыңызды 2026 жылдың 1 желтоқсанына дейін растауыңызды сұраймыз.">Пожалуйста, подтвердите ваше участие до 1 декабря 2026 г.</p>
     <iframe name="hidden_iframe" id="hidden_iframe" style="display:none" onload="if(submitted){showSuccess();}"></iframe>
-    <form id="rsvpForm" action="https://script.google.com/macros/s/AKfycbz9fUMRZbx3AH0_aolTMKstSjLqJinpe4nyV-orqvVmlXHQNqG3wyY6sZy2Ppq3wM79/exec" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
+    <form id="rsvpForm" action="https://script.google.com/macros/s/AKfycbz9fUMRZbx3AH0_aolTMKstSjLqJinpe4nyV-orqvVmlXHQNqG3wyY6sZy2Ppq3wM79/exec" method="POST" target="hidden_iframe" onsubmit="submitted=true;prep();">
       <div class="form-group">
         <label class="form-label" data-ru="Ваше имя и фамилия" data-kz="Аты-жөніңіз">Ваше имя и фамилия</label>
         <input type="text" name="name" required placeholder="Введите ваше имя...">
@@ -156,7 +156,7 @@ input[type=text]:focus,textarea:focus{border-color:var(--primary)}
         <label class="form-label" data-ru="Сможете ли вы присутствовать?" data-kz="Тойға қатыса аласыз ба?">Сможете ли вы присутствовать?</label>
         <div class="radio-group">
           <label class="radio-label"><input type="radio" name="status" value="Присутствует / Қатысады" checked><span data-ru="Буду(-ем) с радостью" data-kz="Міндетті түрде келемін">Буду(-ем) с радостью</span></label>
-          <label class="radio-label"><input type="radio" name="status" value="Придёт с женой/девушкой / Жұбайымен келеді"><span data-ru="Буду с женой / девушкой" data-kz="Жұбайыммен / сүйіктіммен келемін">Буду с женой / девушкой</span></label>
+          <label class="radio-label"><input type="radio" name="status" value="Присутствует / Қатысады" data-plus="1"><span data-ru="Буду с женой / девушкой" data-kz="Жұбайыммен / сүйіктіммен келемін">Буду с женой / девушкой</span></label>
           <label class="radio-label"><input type="radio" name="status" value="Не сможет / Қатыса алмайды"><span data-ru="К сожалению, не смогу" data-kz="Өкінішке орай, келе алмаймын">К сожалению, не смогу</span></label>
         </div>
       </div>
@@ -204,6 +204,13 @@ function updateCountdown(){
 }
 setInterval(updateCountdown,1000);updateCountdown();
 
+// "С женой/девушкой" уходит в таблицу как "Присутствует", а пометка добавляется к пожеланию
+function prep(){
+  const f=document.getElementById('rsvpForm');
+  const plus=f.querySelector('input[data-plus]');
+  const ta=f.querySelector('textarea');
+  if(plus&&plus.checked&&!ta.dataset.done){ta.value='(с женой/девушкой) '+ta.value;ta.dataset.done='1';}
+}
 function showSuccess(){
   document.getElementById('rsvpForm').style.display='none';
   document.getElementById('successMsg').style.display='block';
