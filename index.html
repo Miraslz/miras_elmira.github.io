@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="kk">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Мирас & Эльмира — Приглашение на свадьбу</title>
+<title>Мирас & Эльмира — Үйлену тойына шақыру</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -102,41 +102,6 @@ input[type=text]:focus,textarea:focus{border-color:var(--primary)}
 
 /* Идеальное сердце для 13 числа */
 .cal-g span.heart-day {
-  color: #fff !important;
-  font-weight: 700;
-  font-size: 15px;
-  z-index: 1;
-}
-.cal-g span.heart-day::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 34px;
-  height: 34px;
-  background: var(--primary);
-  transform: translate(-50%, -50%) rotate(-45deg);
-  border-radius: 4px;
-  z-index: -1;
-  box-shadow: 0 4px 10px rgba(197, 160, 89, 0.4);
-}
-.cal-g span.heart-day::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 34px;
-  height: 34px;
-  z-index: -1;
-}
-
-/* Изгибы сердечка */
-.cal-g span.heart-day::before {
-  border-radius: 0;
-  background: transparent;
-  box-shadow: none;
-}
-.cal-g span.heart-day {
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23c5a059'%3E%3Cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E") center/contain no-repeat;
   color: #fff !important;
   font-weight: 700;
@@ -154,8 +119,8 @@ input[type=text]:focus,textarea:focus{border-color:var(--primary)}
 <body>
 
 <div class="lang-switch">
-  <button type="button" class="lang-btn active" onclick="setLang('ru')">RU</button>
-  <button type="button" class="lang-btn" onclick="setLang('kz')">ҚАЗ</button>
+  <button type="button" class="lang-btn active" onclick="setLang('kz')">ҚАЗ</button>
+  <button type="button" class="lang-btn" onclick="setLang('ru')">RU</button>
 </div>
 <button type="button" class="music" id="musicBtn" aria-label="Музыка">♪</button>
 
@@ -163,7 +128,7 @@ input[type=text]:focus,textarea:focus{border-color:var(--primary)}
   <div class="monogram">М <span>&</span> Э</div>
   <div class="full-names">Мирас & Эльмира</div>
   <div class="date-dots">13 . 12 . 2026</div>
-  <div class="scroll-t" data-ru="Вниз" data-kz="Төмен түсіңіз">Вниз</div>
+  <div class="scroll-t" data-ru="Вниз" data-kz="Төмен түсіңіз">Төмен түсіңіз</div>
   <div class="scroll"></div>
 </header>
 
@@ -173,75 +138,75 @@ input[type=text]:focus,textarea:focus{border-color:var(--primary)}
 <div class="container">
   <section class="rv">
     <div class="invite-block">
-      <p class="invite-pre" data-ru="Дорогие родные, друзья и близкие! Совсем скоро состоится один из самых важных и особенных дней в нашей жизни, и мы хотим разделить эту радость с вами!" data-kz="Құрметті ағайын-туыс, бауырлар, нағашы-жиен, бөлелер, құда-жекжат, дос-жарандар, әріптестер мен көршілер!">Дорогие родные, друзья и близкие! Совсем скоро состоится один из самых важных и особенных дней в нашей жизни, и мы хотим разделить эту радость с вами!</p>
+      <p class="invite-pre" data-ru="Дорогие родные, друзья и близкие! Совсем скоро состоится один из самых важных и особенных дней в нашей жизни, и мы хотим разделить эту радость с вами!" data-kz="Құрметті ағайын-туыс, бауырлар, нағашы-жиен, бөлелер, құда-жекжат, дос-жарандар, әріптестер мен көршілер!">Құрметті ағайын-туыс, бауырлар, нағашы-жиен, бөлелер, құда-жекжат, дос-жарандар, әріптестер мен көршілер!</p>
       
-      <div class="invite-you" data-ru="ПРИГЛАШАЕМ ВАС" data-kz="СІЗДЕРДІ">ПРИГЛАШАЕМ ВАС</div>
+      <div class="invite-you" data-ru="ПРИГЛАШАЕМ ВАС" data-kz="СІЗДЕРДІ">СІЗДЕРДІ</div>
       <div class="invite-couple">Мирас & Эльмира</div>
-      <div class="invite-post" data-ru="НА НАШУ СВАДЬБУ ОТ ВСЕГО СЕРДЦА!" data-kz="ШАҢЫРАҚ КӨТЕРУ ТОЙЫНА ШЫН ЖҮРЕКТЕН ШАҚЫРАМЫЗ!">НА НАШУ СВАДЬБУ ОТ ВСЕГО СЕРДЦА!</div>
+      <div class="invite-post" data-ru="НА НАШУ СВАДЬБУ ОТ ВСЕГО СЕРДЦА!" data-kz="ШАҢЫРАҚ КӨТЕРУ ТОЙЫНА ШЫН ЖҮРЕКТЕН ШАҚЫРАМЫЗ!">ШАҢЫРАҚ КӨТЕРУ ТОЙЫНА ШЫН ЖҮРЕКТЕН ШАҚЫРАМЫЗ!</div>
     </div>
 
     <div class="divider"></div>
-    <p style="font-weight:500;text-transform:uppercase;font-size:13px;letter-spacing:2px;color:#777;margin-bottom:6px" data-ru="Той иелери:" data-kz="Той иелері:">Той иелери:</p>
-    <div class="role" data-ru="Бабушка и дедушка" data-kz="Әже мен ата">Бабушка и дедушка</div>
+    <p style="font-weight:500;text-transform:uppercase;font-size:13px;letter-spacing:2px;color:#777;margin-bottom:6px" data-ru="Той иелери:" data-kz="Той иелері:">Той иелері:</p>
+    <div class="role" data-ru="Дедушка & Бабушка" data-kz="Ата & Әже">Ата & Әже</div>
     <div class="hosts-text big">Қуанғали - Қибарат</div>
-    <div class="role" data-ru="Родители" data-kz="Ата-ана">Родители</div>
+    <div class="role" data-ru="Родители" data-kz="Ата-ана">Ата-ана</div>
     <div class="hosts-text">Арман - Жумагуль</div>
   </section>
 
   <section class="rv">
-    <p class="lbl" data-ru="Дата торжества:" data-kz="Той салтанаты:">Дата торжества:</p>
-    <h2 class="t" data-ru="13 декабря 2026" data-kz="13 желтоқсан 2026">13 декабря 2026</h2>
+    <p class="lbl" data-ru="Дата торжества:" data-kz="Той салтанаты:">Той салтанаты:</p>
+    <h2 class="t" data-ru="13 декабря 2026" data-kz="13 желтоқсан 2026">13 желтоқсан 2026</h2>
     <div class="cal">
-      <div class="cal-h" data-ru="Декабрь 2026" data-kz="Желтоқсан 2026">Декабрь 2026</div>
-      <div class="cal-g" id="cal"><b data-ru="Пн" data-kz="Дс">Пн</b><b data-ru="Вт" data-kz="Сс">Вт</b><b data-ru="Ср" data-kz="Ср">Ср</b><b data-ru="Чт" data-kz="Бс">Чт</b><b data-ru="Пт" data-kz="Жм">Пт</b><b data-ru="Сб" data-kz="Сн">Сб</b><b data-ru="Вс" data-kz="Жс">Вс</b></div>
-      <p data-ru="Начало в 17:00" data-kz="Сағат 17:00-де басталады">Начало в 17:00</p>
+      <div class="cal-h" data-ru="Декабрь 2026" data-kz="Желтоқсан 2026">Желтоқсан 2026</div>
+      <div class="cal-g" id="cal"><b data-ru="Пн" data-kz="Дс">Дс</b><b data-ru="Вт" data-kz="Сс">Сс</b><b data-ru="Ср" data-kz="Ср">Ср</b><b data-ru="Чт" data-kz="Бс">Бс</b><b data-ru="Пт" data-kz="Жм">Жм</b><b data-ru="Сб" data-kz="Сн">Сн</b><b data-ru="Вс" data-kz="Жс">Жс</b></div>
+      <p data-ru="Начало в 17:00" data-kz="Сағат 17:00-де басталады">Сағат 17:00-де басталады</p>
     </div>
-    <p class="lbl" data-ru="Программа торжества:" data-kz="Тойдың бағдарламасы:">Программа торжества:</p>
+    <p class="lbl" data-ru="Программа торжества:" data-kz="Тойдың бағдарламасы:">Тойдың бағдарламасы:</p>
     <div class="program-box">
-      <div class="program-item"><div class="program-time">17:00</div><div class="program-details"><h4 data-ru="Беташар" data-kz="Беташар">Беташар</h4><p data-ru="Традиционный обряд знакомства невесты с родными" data-kz="Қалыңдықты туыстармен таныстыру дәстүрі">Традиционный обряд знакомства невесты с родными</p></div></div>
-      <div class="program-item"><div class="program-time">18:00</div><div class="program-details"><h4 data-ru="Свадебный банкет" data-kz="Үйлену тойы">Свадебный банкет</h4><p data-ru="Праздничный вечер, поздравления и торжество" data-kz="Мерекелік кеш, құттықтаулар мен той думан">Праздничный вечер, поздравления и торжество</p></div></div>
-      <div class="program-item"><div class="program-time">19:30</div><div class="program-details"><h4 data-ru="Развлекательная программа" data-kz="Ойын-сауық бағдарламасы">Развлекательная программа</h4><p data-ru="Танцы, музыка и праздничное настроение" data-kz="Би кеші, музыка және көңілді көңіл-күй">Танцы, музыка и праздничное настроение</p></div></div>
+      <div class="program-item"><div class="program-time">17:00</div><div class="program-details"><h4 data-ru="Беташар" data-kz="Беташар">Беташар</h4><p data-ru="Традиционный обряд знакомства невесты с родными" data-kz="Қалыңдықты туыстармен таныстыру дәстүрі">Қалыңдықты туыстармен таныстыру дәстүрі</p></div></div>
+      <div class="program-item"><div class="program-time">18:00</div><div class="program-details"><h4 data-ru="Свадебный банкет" data-kz="Үйлену тойы">Үйлену тойы</h4><p data-ru="Праздничный вечер, поздравления и торжество" data-kz="Мерекелік кеш, құттықтаулар мен той думан">Мерекелік кеш, құттықтаулар мен той думан</p></div></div>
+      <div class="program-item"><div class="program-time">19:30</div><div class="program-details"><h4 data-ru="Развлекательная программа" data-kz="Ойын-сауық бағдарламасы">Ойын-сауық бағдарламасы</h4><p data-ru="Танцы, музыка и праздничное настроение" data-kz="Би кеші, музыка және көңілді көңіл-күй">Би кеші, музыка және көңілді көңіл-күй</p></div></div>
     </div>
     <p class="lbl" data-ru="До торжества:" data-kz="Тойға дейін">Тойға дейін:</p>
     <div class="countdown">
-      <div class="time-box"><span id="days">00</span><label data-ru="Дней" data-kz="Күн">Дней</label></div>
-      <div class="time-box"><span id="hours">00</span><label data-ru="Часов" data-kz="Сағат">Часов</label></div>
+      <div class="time-box"><span id="days">00</span><label data-ru="Дней" data-kz="Күн">Күн</label></div>
+      <div class="time-box"><span id="hours">00</span><label data-ru="Часов" data-kz="Сағат">Сағат</label></div>
       <div class="time-box"><span id="minutes">00</span><label data-ru="Минут" data-kz="Минут">Минут</label></div>
       <div class="time-box"><span id="seconds">00</span><label data-ru="Секунд" data-kz="Секунд">Секунд</label></div>
     </div>
   </section>
 
   <section class="rv">
-    <h2 class="t" data-ru="Место проведения" data-kz="Мекен-жай">Место проведения</h2>
-    <p style="font-size:20px;font-weight:600;color:#222;margin-bottom:5px" data-ru="Ресторан «Шахназ»" data-kz="«Шахназ» мейрамханасы">Ресторан «Шахназ»</p>
-    <p data-ru="г. Актау" data-kz="Ақтау қаласы">г. Актау</p>
-    <a href="https://2gis.kz/aktau/geo/70000001092077313?inv_by=724627c74aab4fc6924e4efde3dad254&inv_ts=1793783729" target="_blank" rel="noopener" class="btn" data-ru="Открыть в 2GIS" data-kz="2GIS-те ашу">Открыть в 2GIS</a>
+    <h2 class="t" data-ru="Место проведения" data-kz="Мекен-жай">Мекен-жай</h2>
+    <p style="font-size:20px;font-weight:600;color:#222;margin-bottom:5px" data-ru="Ресторан «Шахназ»" data-kz="«Шахназ» мейрамханасы">«Шахназ» мейрамханасы</p>
+    <p data-ru="г. Актау" data-kz="Ақтау қаласы">Ақтау қаласы</p>
+    <a href="https://2gis.kz/aktau/geo/70000001092077313?inv_by=724627c74aab4fc6924e4efde3dad254&inv_ts=1793783729" target="_blank" rel="noopener" class="btn" data-ru="Открыть в 2GIS" data-kz="2GIS-те ашу">2GIS-те ашу</a>
   </section>
 
   <section class="rv">
-    <h2 class="t" data-ru="Подтверждение присутствия" data-kz="Анкета">Подтверждение присутствия</h2>
-    <p data-ru="Пожалуйста, подтвердите ваше участие до 1 декабря 2026 г." data-kz="Тойға келуіңізді растауыңызды сұраймыз! 2026 жылдың 1 желтоқсанына дейін.">Пожалуйста, подтвердите ваше участие до 1 декабря 2026 г.</p>
+    <h2 class="t" data-ru="Подтверждение присутствия" data-kz="Анкета">Анкета</h2>
+    <p data-ru="Пожалуйста, подтвердите ваше участие до 1 декабря 2026 г." data-kz="Тойға келуіңізді растауыңызды сұраймыз! 2026 жылдың 1 желтоқсанына дейін.">Тойға келуіңізді растауыңызды сұраймыз! 2026 жылдың 1 желтоқсанына дейін.</p>
     <iframe name="hidden_iframe" id="hidden_iframe" style="display:none" onload="if(submitted){showSuccess();}"></iframe>
     <form id="rsvpForm" action="https://script.google.com/macros/s/AKfycbz4yXDVkbesvNs1Yk-_RLmwHgrPpBhFAtL-L8PO-_LnYtR0RWzk3UuvkQLFBV6BZmk2/exec" method="POST" target="hidden_iframe" onsubmit="submitted=true;prep();">
       <div class="form-group">
-        <label class="form-label" data-ru="Ваше имя и фамилия" data-kz="Аты-жөніңіз">Ваше имя и фамилия</label>
-        <input type="text" name="name" required placeholder="Введите ваше имя..." data-ph-ru="Введите ваше имя..." data-ph-kz="Аты-жөніңізді жазыңыз...">
+        <label class="form-label" data-ru="Ваше имя и фамилия" data-kz="Аты-жөніңіз">Аты-жөніңіз</label>
+        <input type="text" name="name" required placeholder="Аты-жөніңізді жазыңыз..." data-ph-ru="Введите ваше имя..." data-ph-kz="Аты-жөніңізді жазыңыз...">
       </div>
       <div class="form-group">
-        <label class="form-label" data-ru="Сможете ли вы присутствовать?" data-kz="Келесіз бе?">Сможете ли вы присутствовать?</label>
+        <label class="form-label" data-ru="Сможете ли вы присутствовать?" data-kz="Келесіз бе?">Келесіз бе?</label>
         <div class="radio-group">
-          <label class="radio-label"><input type="radio" name="status" value="Присутствует / Қатысады" checked><span data-ru="Буду(-ем) с радостью" data-kz="Иә, әрине">Буду(-ем) с радостью</span></label>
-          <label class="radio-label"><input type="radio" name="status" value="Присутствует / Қатысады" data-plus="1"><span data-ru="Буду с женой / девушкой" data-kz="Жұбайыммен келемін">Буду с женой / девушкой</span></label>
-          <label class="radio-label"><input type="radio" name="status" value="Не сможет / Қатыса алмайды"><span data-ru="К сожалению, не смогу" data-kz="Келе алмаймын">К сожалению, не смогу</span></label>
+          <label class="radio-label"><input type="radio" name="status" value="Присутствует / Қатысады" checked><span data-ru="Буду(-ем) с радостью" data-kz="Иә, әрине">Иә, әрине</span></label>
+          <label class="radio-label"><input type="radio" name="status" value="Присутствует / Қатысады" data-plus="1"><span data-ru="Буду со второй половинкой" data-kz="Екінші жартысыммен келемін">Екінші жартысыммен келемін</span></label>
+          <label class="radio-label"><input type="radio" name="status" value="Не сможет / Қатыса алмайды"><span data-ru="К сожалению, не смогу" data-kz="Келе алмаймын">Келе алмаймын</span></label>
         </div>
       </div>
       <div class="form-group">
-        <label class="form-label" data-ru="Ваши пожелания молодоженам" data-kz="Жас жұбайларға тілегіңіз">Ваши пожелания молодоженам</label>
-        <textarea name="message" rows="3" placeholder="Ваше теплое слово..." data-ph-ru="Ваше теплое слово..." data-ph-kz="Жылы тілегіңізді жазыңыз..."></textarea>
+        <label class="form-label" data-ru="Ваши пожелания молодоженам" data-kz="Жас жұбайларға тілегіңіз">Жас жұбайларға тілегіңіз</label>
+        <textarea name="message" rows="3" placeholder="Жылы тілегіңізді жазыңыз..." data-ph-ru="Ваше теплое слово..." data-ph-kz="Жылы тілегіңізді жазыңыз..."></textarea>
       </div>
-      <button type="submit" class="btn" style="width:100%;cursor:pointer" data-ru="Отправить ответ" data-kz="Жіберу">Отправить ответ</button>
+      <button type="submit" class="btn" style="width:100%;cursor:pointer" data-ru="Отправить ответ" data-kz="Жіберу">Жіберу</button>
     </form>
-    <div id="successMsg" class="success-msg" data-ru="Спасибо! Ваш ответ успешно отправлен." data-kz="Рақмет! Жауабыңыз сәтті жіберілді.">Спасибо! Ваш ответ успешно отправлен.</div>
+    <div id="successMsg" class="success-msg" data-ru="Спасибо! Ваш ответ успешно отправлен." data-kz="Рақмет! Жауабыңыз сәтті жіберілді.">Рақмет! Жауабыңыз сәтті жіберілді.</div>
   </section>
 
 </div>
@@ -255,11 +220,11 @@ input[type=text]:focus,textarea:focus{border-color:var(--primary)}
 <script>
 let submitted=false;
 
-// Язык
+// Язык (ҚАЗ первый, RU второй)
 function setLang(lang){
   const b=document.querySelectorAll('.lang-btn');
   b.forEach(x=>x.classList.remove('active'));
-  b[lang==='ru'?0:1].classList.add('active');
+  b[lang==='kz'?0:1].classList.add('active');
   document.documentElement.lang=lang==='ru'?'ru':'kk';
   document.querySelectorAll('[data-ph-ru]').forEach(el=>{el.placeholder=el.getAttribute('data-ph-'+lang);});
   document.querySelectorAll('[data-ru]').forEach(el=>{const t=el.getAttribute('data-'+lang);if(t)el.textContent=t;});
@@ -278,12 +243,12 @@ function updateCountdown(){
 }
 setInterval(updateCountdown,1000);updateCountdown();
 
-// "С женой/девушкой" уходит в таблицу как "Присутствует", а пометка добавляется к пожеланию
+// "Со второй половинкой" уходит в таблицу как "Присутствует", а пометка добавляется к пожеланию
 function prep(){
   const f=document.getElementById('rsvpForm');
   const plus=f.querySelector('input[data-plus]');
   const ta=f.querySelector('textarea');
-  if(plus&&plus.checked&&!ta.dataset.done){ta.value='(с женой/девушкой) '+ta.value;ta.dataset.done='1';}
+  if(plus&&plus.checked&&!ta.dataset.done){ta.value='(со второй половинкой) '+ta.value;ta.dataset.done='1';}
 }
 function showSuccess(){
   document.getElementById('rsvpForm').style.display='none';
